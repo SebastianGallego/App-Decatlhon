@@ -1,0 +1,54 @@
+
+13/10 
+Una vez que tengo el carrito de compras con todo lo que fui agregando 
+dentro de un div cartContainer puedo usar el método reduce para obtener
+la suma, un promedio, etc
+
+cartContainer.reduce(funcion a realizar, valor inicial)
+
+En este caso hay que sumar y multiplicar, los items y las cantidades
+
+14/10
+Tengo que verificar si ya existe el mismo producto en el carrito
+Si ya existe tengo que sumar a la cantidad y si no, lo agrego porque 
+va a ser el primero
+Antes de hacer el push al shoppingCartArray, tengo que ver si existe
+lo puedo hacer comparando con el ID recorriendo el shoppingCartArray. 
+
+
+15/10
+Si tengo que eliminar un item del carrito con el boton "Remover"
+puedo filtrar todos menos el que quiero y luego vuelvo a renderizar
+la lista del carrito
+
+
+Cuando actualizo los elementos del Dom,, tengo que volver a ponerme a 
+escuchar porque ya son elementos nuevos del DOM
+
+Si me quedo con la Api de Zapatillas puedo hacer un filtrado por:
+- Rango de Precios
+- rating.Rate
+
+
+16/10
+Objeto Producto: (un objeto de Producto y un Array de Productos para el carrito)
+- id 
+- title 
+- image
+- price 
+- quantity (me sirve para la cantidad del carrito)
+
+
+17/10
+Carrito de compras - Vanilla JavaScript y template HTML 
+    - Event delegation
+    
+
+18/10 
+Cambio del Enfoque:
+- archivo .json de productos decathlon
+- Filtrar por (categoria, marca y color) Plus: precio
+- Plus: agregar loading y alguna detalle para el rating
+
+font-family: avalonbold,Helvetica Neue,Helvetica,Arial,sans-serif;
+
