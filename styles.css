@@ -59,6 +59,10 @@ li a:hover {
   font-size: 20px;
 }
 
+.brandLogo {
+  width: 200px;
+}
+
 #gris {
   color: #686666d7;
 }

@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", (e) => {
+document.addEventListener("DOMContentLoaded", () => {
   fetchData();
 });
 
@@ -7,7 +7,7 @@ let data = [];
 const fetchData = async () => {
   const res = await fetch("api.json");
   data = await res.json();
-  renderFilters(data, (campo = "id"), (valor = "Ver Todos"));
+  productFilter(data, (campo = "id"), (valor = "Ver Todos"));
 };
 
 //Recibe el json de la consulta y lo muestra en pantalla
@@ -30,11 +30,15 @@ async function renderResults(data) {
 
 //Filtro por Campo/Valor, recibe el Array de Productos, y por que campo va
 // a filtrar ademas del valor, si recibe "All" muestra todos
-function renderFilters(data, campo, valor) {
-  console.log(campo, valor);
+function productFilter(data, campo, valor) {
   const productsFilters = data.filter((producto) => {
     return producto[campo] === valor || valor === "Ver Todos";
   });
+
+  const resultsTitle = document.getElementById("resultsTitle");
+  resultsTitle.innerHTML = "";
+  resultsTitle.innerHTML = valor;
+
   renderResults(productsFilters);
 }
 
@@ -50,12 +54,17 @@ function renderStars(rating) {
   return starsFull + starsCount;
 }
 
-let filterCategory = document.querySelectorAll(".category");
+let filterkey = document.querySelectorAll("ul");
 
-filterCategory.forEach((category) => {
-  category.addEventListener("click", function (e) {
-    const campo = "category";
-    const valor = category.innerText;
-    renderFilters(data, campo, valor);
+filterkey.forEach((filter) => {
+  filter.addEventListener("click", function (e) {
+    // Capturo la primer clase de todas las que tenga la etiqueta
+    const campo = filter.classList[0];
+    let valor = e.target.innerText;
+    if (valor === "") {
+      // Si es una img no tiene un innerText uso el atributo data
+      valor = e.target.getAttribute("data");
+    }
+    productFilter(data, campo, valor);
   });
 });
