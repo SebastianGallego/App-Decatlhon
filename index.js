@@ -1,63 +1,49 @@
-let productContainer = document.querySelector(".shop-items");
-let productsArray = [];
-let viewMoreBtn = [];
-let actualID;
-let buttons;
+document.addEventListener("DOMContentLoaded", (e) => {
+  fetchData();
+});
 
-// Parametros de la API
-/*const url = "https://shoes-collections.p.rapidapi.com/shoes";
-const options = {
-  method: "GET",
-  headers: {
-    "X-RapidAPI-Key": "07c3d30a48msh7f14b4b7ccee2cap11c871jsn9e2f0660efb4",
-    "X-RapidAPI-Host": "shoes-collections.p.rapidapi.com",
-  },
-};*/
+let data = [];
 
-//Pido los Productos al Servidor
-//fetch(url, options)
-fetch("https://fakestoreapi.com/products")
-  .then((res) => res.json())
-  .then((data) => {
-    console.log(data); //Luego quitar Comentario
-    productsArray = data.slice(0, 21); //Me queso con 21 Productos
+const fetchData = async () => {
+  const res = await fetch("api.json");
+  data = await res.json();
 
-    getResults(productsArray); //Llamo a la funcion que genera las cards
-  })
-  .catch((error) => {
-    console.error("Error al obtener datos de la API:", error);
+  const campo = "color";
+  const valor = "Azul";
+  renderFilters(data, campo, valor);
+};
+
+//Recibe el json de la consulta y lo muestra en pantalla
+let resultsContainer = document.getElementById("results");
+
+async function renderResults(data) {
+  data.forEach((result) => {
+    resultsContainer.innerHTML += `
+    <div class="card">
+        <img src="${result.thumbnailUrl}" alt="${result.title}">
+        <h3 class="productPrice">${result.price} €</h3>
+        <h3 class="brand">${result.brand}</h3>
+        <h4>${result.title}</h4>
+        <div class="rating">${renderStars(result.rating)}</div>
+        
+    </div> `;
   });
+}
 
-//Recibe el json de la consulta y genera las cards guardo el ID
-function getResults(productsArray) {
-  productsArray.forEach((product) => {
-    const title = product.title.substring(0, 30);
+//Filtro por marca
+function renderFilters(data, campo, valor) {
+  const productsFilters = data.filter((producto) => producto[campo] === valor);
+  renderResults(productsFilters);
+}
 
-    productContainer.innerHTML += `
-        <div class="shop-item" id="${product.id}">  
-        <img class="shop-item-image" src="${product.image}">
-        <span class="shop-item-title">${title}</span>
-        <div class="shop-item-details">
-            <span class="shop-item-price">$ ${product.price}</span>
-            <button class="btn btn-primary view-more-btn" type="button">Ver más</button>
-        </div>
-    </div>`;
-  });
+// Función para generar estrellas en proporción al rating
+function renderStars(rating) {
+  const stars = "★★★★★"; // Cinco estrellas llenas
+  const starsZero = "☆☆☆☆☆"; // Cinco estrellas vacías
+  const starsMax = 5; // Valor máximo de calificación
 
-  //Para convertir de NodeList a un Array de Botones
-  viewMoreBtn = document.querySelectorAll(".view-more-btn");
-  viewMoreBtn = [...viewMoreBtn];
+  const starsFull = stars.slice(0, rating);
+  const starsCount = starsZero.slice(0, starsMax - rating);
 
-  //Escucho el clic los botones de las tarjetas, con el ID voy y busco en
-  //el Array de Productos el Producto Actual
-
-  viewMoreBtn.forEach((btn) => {
-    btn.addEventListener("click", function (event) {
-      if (event.target.classList.contains("view-more-btn")) {
-        actualID = parseInt(event.target.parentNode.parentNode.id);
-      }
-      //paso el ID como parametro para luego Buscarlo
-      window.location.href = "product.html?id=" + actualID;
-    });
-  });
+  return starsFull + starsCount;
 }
