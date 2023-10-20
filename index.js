@@ -7,16 +7,14 @@ let data = [];
 const fetchData = async () => {
   const res = await fetch("api.json");
   data = await res.json();
-
-  const campo = "color";
-  const valor = "Azul";
-  renderFilters(data, campo, valor);
+  renderFilters(data, (campo = "id"), (valor = "Ver Todos"));
 };
 
 //Recibe el json de la consulta y lo muestra en pantalla
 let resultsContainer = document.getElementById("results");
 
 async function renderResults(data) {
+  resultsContainer.innerHTML = "";
   data.forEach((result) => {
     resultsContainer.innerHTML += `
     <div class="card">
@@ -30,9 +28,13 @@ async function renderResults(data) {
   });
 }
 
-//Filtro por marca
+//Filtro por Campo/Valor, recibe el Array de Productos, y por que campo va
+// a filtrar ademas del valor, si recibe "All" muestra todos
 function renderFilters(data, campo, valor) {
-  const productsFilters = data.filter((producto) => producto[campo] === valor);
+  console.log(campo, valor);
+  const productsFilters = data.filter((producto) => {
+    return producto[campo] === valor || valor === "Ver Todos";
+  });
   renderResults(productsFilters);
 }
 
@@ -47,3 +49,13 @@ function renderStars(rating) {
 
   return starsFull + starsCount;
 }
+
+let filterCategory = document.querySelectorAll(".category");
+
+filterCategory.forEach((category) => {
+  category.addEventListener("click", function (e) {
+    const campo = "category";
+    const valor = category.innerText;
+    renderFilters(data, campo, valor);
+  });
+});

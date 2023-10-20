@@ -52,3 +52,9 @@ Cambio del Enfoque:
 
 font-family: avalonbold,Helvetica Neue,Helvetica,Arial,sans-serif;
 
+20/10
+Ya está filtrando por categoria tengo que pensar algo similar con las clases
+y que on la misma funcion filtre por color y marcas
+Opcion de ver todos en general (eliminar filtros)
+Poner un titulo que muestre que hay en el contenedor de tarjetas
+
