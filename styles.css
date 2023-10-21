@@ -15,15 +15,8 @@ body {
   font-family: var(--font);
 }
 
-#sidebar {
-  width: 10%;
-  padding: 10px;
-  margin: 0;
-  float: left;
-}
-
 .navLogo {
-  padding-left: 10px;
+  width: 460px;
 }
 
 .cartLogo {
@@ -40,11 +33,11 @@ h6 {
 
 ul {
   list-style: none;
-  padding: 5px;
+  padding: 1px;
 }
 
 li a span {
-  margin-right: 15px;
+  margin-right: 5px;
 }
 
 li a {
@@ -63,6 +56,8 @@ li a:hover {
 
 .brandLogo {
   width: 200px;
+  max-width: 200px;
+  align-items: center;
 }
 
 #gris {
@@ -150,8 +145,43 @@ footer p {
 
 /* Media Querys   */
 
+@media screen and (max-width: 576px) {
+  .navbarContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .cartLogo {
+    width: 50px;
+  }
+}
+
 @media screen and (max-width: 750px) {
   .footerInfoSocial {
     flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 1900px) {
+  .colorsName {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .containerPrincipal {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+
+  .colorsName {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
   }
 }
