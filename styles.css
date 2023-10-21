@@ -158,18 +158,21 @@ footer {
 
 /* Media Querys   */
 
-/* Breakpoints Small   */
-@media screen and (max-width: 576px) {
+/* Breakpoints XS   */
+@media screen and (max-width: 415px) {
   .cartLogo {
     width: 50px;
   }
 
+  .navLogo {
+    width: 414px;
+  }
   .footerInfo p {
     font-size: 18px;
   }
 
   .footerLogo {
-    width: 260px;
+    width: 200px;
   }
 
   .footerSocial > p {
@@ -178,6 +181,13 @@ footer {
 
   .iconsSocial > a > i {
     font-size: 36px;
+    margin: 5px 0px;
+  }
+
+  .iconsSocial {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 }
 
