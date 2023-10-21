@@ -36,9 +36,6 @@
 <body>
 
     <!-- Barra de Navegacion -->
-
-
-    <!-- Contenedor Tarjetas de Productos -->
     <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom row ">
 
         <div class="col-md-2">
@@ -64,16 +61,21 @@
 
 
 
-
+    <!-- Seccion SideBar Filtros -->
     <section id="sidebar" class="container d-flex flex-column">
         <div class="container d-flex flex-column">
             <h6 class="p-1 border-bottom">Productos</h6>
+            <ul class="category">
+                <li><a href="#" class="">Ver Todos</a></li>
+            </ul>
+        </div>
+        <div class="container d-flex flex-column">
+            <h6 class="p-1 border-bottom">Categorías</h6>
             <ul class="category">
                 <li><a href="#" class="">Pantalón</a></li>
                 <li><a href="#" class="">Remeras</a></li>
                 <li><a href="#" class="">Zapatillas</a></li>
                 <li><a href="#" class="">Mochilas</a></li>
-                <li><a href="#" class="">Ver Todos</a></li>
             </ul>
         </div>
         <div class="container d-flex flex-column">
@@ -91,35 +93,32 @@
                 <li class="list-group-item list-group-item-action mb-2 rounded color"><a class="colorsName" href="#">
                         <span class="fa fa-circle pr-1" id="negro"></span>Negro
                     </a></li>
-                <li class="list-group-item list-group-item-action mb-2 rounded color"><a class="colorsName" href="#">
-                        <span class="fa fa-circle pr-1" id="otros"></span>Ver Todos
-                    </a></li>
             </ul>
         </div>
         <div class=" d-flex flex-column">
             <h6 class="p-1 border-bottom"> Marcas</h6>
             <ul class="brand list-group">
-                <li class="list-group-item  ">
-                    <img src="./Images/adidasLogo.png" alt="" class="brandLogo" data="Adidas">
+                <li class="list-group-item ">
+                    <img src="./Images/quechuaLogo.png" alt="" class="brandLogo w-100 h-100" data="Quechua">
                 </li>
                 <li class="list-group-item">
-                    <img src="./Images/forclazLogo.png" alt="" class="brandLogo" data="Forclaz">
+                    <img src="./Images/forclazLogo.png" alt="" class="brandLogo w-100 h-100" data="Forclaz">
+                </li>
+                <li class="list-group-item ">
+                    <img src="./Images/salomonLogo.png" alt="" class="brandLogo w-100 h-100" data="Salomon">
                 </li>
                 <li class="list-group-item  d-flex ">
-                    <img src="./Images/pumaLogo.png" alt="" class="brandLogo" data="Puma">
+                    <img src="./Images/pumaLogo.png" alt="" class="brandLogo w-100 h-100" data="Puma">
                 </li>
-                <li class="list-group-item ">
-                    <img src="./Images/quechuaLogo.png" alt="" class="brandLogo" data="Quechua">
-                </li>
-                <li class="list-group-item ">
-                    <img src="./Images/salomonLogo.png" alt="" class="brandLogo" data="Salomon">
+                <li class="list-group-item  ">
+                    <img src="./Images/adidasLogo.png" alt="" class="brandLogo w-100 h-100" data="Adidas">
                 </li>
         </div>
     </section>
 
 
 
-
+    <!-- Seccion Tarjetas Productos -->
     <section id="products">
         <div class="mt-2 ms-4">
             <h2 id="resultsTitle">Productos:</h2>
@@ -130,46 +129,41 @@
     </section>
 
 
-
-
-
-
-
     <!-- Pie de pagina (footer) -->
-    <!--- <footer class="container-footer">
+    <footer class="text-light d-flex align-items-center  ">
+        <div class="container-fluid">
+            <div class="row ">
+                <div class="col-lg-12 d-flex justify-content-around footerInfoSocial ">
 
-        <div class="footerSides">
-            <p class="footerTexto">UnTref Store </p>
-            <p class="footerTexto">Trabajo Práctico e-Commerce</p>
-            <p class="footerTexto ">Sebastián Gallego (2023) &#169</p>
-        </div>
+                    <div class="footerInfo d-flex flex-column align-items-center justify-content-center">
+                        <p>UnTref Store </p>
+                        <p>Trabajo Práctico e-Commerce</p>
+                        <p>Sebastián Gallego (2023) &#169</p>
+                        <img class="footerLogo" src="./Images/decathlonLogo.png" alt="Logo eCommerce">
+                    </div>
 
-        <div class="footerCenter">
-            <img class="footerLogo" src="./Images/Shop.png" alt="Logo eCpmmerce">
-        </div>
-
-        <div class="footerSides ">
-            <p class="footerTexto ">Redes Sociales</p>
-            <div class="iconosRedesSociales ">
-                <a href="https://twitter.com/Stavelot78" target="_blank" rel="noopener noreferrer">
-                    <i class="fa-brands fa-twitter"></i>
-                </a>
-                <a href="https://www.linkedin.com/in/sebastiangallegocanon/" target="_blank" rel="noopener noreferrer">
-                    <i class="fa-brands fa-linkedin"></i>
-                </a>
-                <a href="https://www.instagram.com/stavelot1978/" target="_blank" rel="noopener noreferrer">
-                    <i class="fa-brands fa-instagram"></i>
-                </a>
-                <a href="https://api.whatsapp.com/send?phone=340715100100" target="_blank">
-                    <i class="fa-brands fa-whatsapp"></i>
-                </a>
+                    <div class="footerSocial d-flex flex-column align-items-center justify-content-center">
+                        <p>Redes Sociales</p>
+                        <div class="iconsSocial ">
+                            <a href="https://twitter.com/Stavelot78" target="_blank" rel="noopener noreferrer">
+                                <i class="fa-brands fa-twitter"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/sebastiangallegocanon/" target="_blank"
+                                rel="noopener noreferrer">
+                                <i class="fa-brands fa-linkedin"></i>
+                            </a>
+                            <a href="https://www.instagram.com/stavelot1978/" target="_blank" rel="noopener noreferrer">
+                                <i class="fa-brands fa-instagram"></i>
+                            </a>
+                            <a href="https://api.whatsapp.com/send?phone=340715100100" target="_blank">
+                                <i class="fa-brands fa-whatsapp"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-
-    </footer>-->
-
-
-
+    </footer>
 
 
 </body>

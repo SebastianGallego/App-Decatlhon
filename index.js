@@ -10,10 +10,10 @@ const fetchData = async () => {
   productFilter(data, (campo = "id"), (valor = "Ver Todos"));
 };
 
-//Recibe el json de la consulta y lo muestra en pantalla
 let resultsContainer = document.getElementById("results");
 
-async function renderResults(data) {
+//Recibe el json de la consulta y lo muestra en pantalla
+function renderResults(data) {
   resultsContainer.innerHTML = "";
   data.forEach((result) => {
     resultsContainer.innerHTML += `
@@ -28,8 +28,9 @@ async function renderResults(data) {
   });
 }
 
-//Filtro por Campo/Valor, recibe el Array de Productos, y por que campo va
-// a filtrar ademas del valor, si recibe "All" muestra todos
+//Filtra por Campo/Valor, recibe el Array de Productos, y por que campo va
+// a filtrar ademas del valor, si recibe "Ver todos" muestra todos
+// Ademas actualiza el Titulo de la lista de Productos
 function productFilter(data, campo, valor) {
   console.log(data, campo, valor);
 
@@ -77,18 +78,7 @@ inputFilter.addEventListener("input", function () {
   let textFilter = inputFilter.value.toLowerCase();
 
   console.log(data, (campo = "title"), textFilter);
-  if (textFilter.length > 0) productFilter(data, (campo = "title"), textFilter);
+  if (textFilter.length > 0) {
+    productFilter(data, (campo = "title"), textFilter);
+  }
 });
-
-/*let inputArtista = document.getElementById("inputArtista");
-
-// Agrega un evento 'input' al campo de entrada, se ejecuta con cada letra
-inputArtista.addEventListener("input", function () {
-  let textoBuscado = inputArtista.value.toLowerCase();
-
-  let result = artistas.filter(function (artista) {
-    return artista.nombre.toLocaleLowerCase().includes(textoBuscado);
-  });
-
-  renderedCards(result);
-}); */

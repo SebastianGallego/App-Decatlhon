@@ -3,7 +3,9 @@
   --yellow: #f8d406;
   --dark: #023447;
   --white: #fff;
-  --plate: rgba(142, 142, 144, 0.651);
+  --plate: #686666d7;
+  --blue: #061fb2;
+  --green: #056a2f;
 
   --font: Roboto Condensed, system-ui, -apple-system, sans-serif;
 }
@@ -64,23 +66,19 @@ li a:hover {
 }
 
 #gris {
-  color: #686666d7;
+  color: var(--plate);
 }
 
 #azul {
-  color: #264896d7;
+  color: var(--blue);
 }
 
 #verde {
-  color: #0a810c;
+  color: var(--green);
 }
 
 #negro {
-  color: #000000;
-}
-
-#otros {
-  color: #f8d406;
+  color: var(--black);
 }
 
 #results {
@@ -127,4 +125,33 @@ h3 {
 
 .card .brand {
   font-weight: bold;
+}
+
+footer {
+  background-image: url("./Images/footerWide.png");
+  background-size: cover; /* Escala la imagen para cubrir todo el footer */
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 300px;
+}
+
+footer p {
+  font-size: x-large;
+  font-weight: 600;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.iconsSocial > a > i {
+  font-size: 40px;
+  font-weight: 600;
+  margin-right: 40px;
+  text-shadow: 2px 2px 4px rgba(241, 235, 235, 0.903);
+}
+
+/* Media Querys   */
+
+@media screen and (max-width: 750px) {
+  .footerInfoSocial {
+    flex-direction: column;
+  }
 }
