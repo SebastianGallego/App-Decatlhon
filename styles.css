@@ -156,6 +156,18 @@ footer p {
   .cartLogo {
     width: 50px;
   }
+
+  .footerInfo p {
+    font-size: 15px;
+  }
+
+  .footerLogo {
+    width: 260px;
+  }
+
+  .footerSocial {
+    font-size: 15px;
+  }
 }
 
 @media screen and (max-width: 750px) {
