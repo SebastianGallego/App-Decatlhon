@@ -22,7 +22,7 @@ body {
 }
 
 .cartLogo {
-  width: 50%;
+  width: 50px;
 }
 
 a {
@@ -143,7 +143,7 @@ footer {
   background-size: cover; /* Escala la imagen para cubrir todo el footer */
   background-repeat: no-repeat;
   background-position: center;
-  height: 300px;
+  height: 280px;
 }
 
 .footerInfo p {
@@ -162,13 +162,20 @@ footer {
 
 /* Breakpoints XS   */
 @media screen and (max-width: 415px) {
-  .cartLogo {
-    width: 50px;
+  #products {
+    width: 320px;
   }
 
   .navLogo {
     width: 412px;
   }
+
+  .containerPrincipal {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+  }
+
   .footerInfo p {
     font-size: 18px;
   }
@@ -193,7 +200,24 @@ footer {
   }
 }
 
-/* Breakpoints XL   */
+@media screen and (max-width: 580px) {
+  .navLogo {
+    width: 414px;
+  }
+  .containerPrincipal {
+    display: flex;
+    flex-direction: column;
+    width: 560;
+  }
+
+  .iconsSocial {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* Breakpoints Hasta 1200   */
 @media screen and (max-width: 1200px) {
   .navbarContainer {
     display: flex;
@@ -204,6 +228,16 @@ footer {
 
   .cartLogo {
     width: 60px;
+  }
+
+  #sidebar {
+    width: 400px;
+  }
+
+  .containerPrincipal {
+    display: flex;
+    flex-direction: row;
+    width: 800;
   }
 
   .footerInfo p {
@@ -229,7 +263,7 @@ footer {
   }
 }
 
-/* Breakpoints xx-L   */
+/* Breakpoints mas de 1201   */
 @media screen and (min-width: 1201px) {
   .navbarContainer {
     display: flex;
@@ -249,6 +283,7 @@ footer {
   .containerPrincipal {
     display: flex;
     flex-direction: row;
+    width: 1800;
   }
 
   #sidebar {
