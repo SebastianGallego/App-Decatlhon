@@ -31,14 +31,16 @@ async function renderResults(data) {
 //Filtro por Campo/Valor, recibe el Array de Productos, y por que campo va
 // a filtrar ademas del valor, si recibe "All" muestra todos
 function productFilter(data, campo, valor) {
+  console.log(data, campo, valor);
+
   const productsFilters = data.filter((producto) => {
-    return producto[campo] === valor || valor === "Ver Todos";
+    return producto[campo] == valor || valor === "Ver Todos";
   });
 
   const resultsTitle = document.getElementById("resultsTitle");
   resultsTitle.innerHTML = "";
-  resultsTitle.innerHTML = valor;
-
+  if (valor == "Ver Todos") valor = "Todos";
+  resultsTitle.innerHTML = `Productos: ${valor}`;
   renderResults(productsFilters);
 }
 
@@ -68,3 +70,25 @@ filterkey.forEach((filter) => {
     productFilter(data, campo, valor);
   });
 });
+
+const inputFilter = document.getElementById("inputFilter");
+
+inputFilter.addEventListener("input", function () {
+  let textFilter = inputFilter.value.toLowerCase();
+
+  console.log(data, (campo = "title"), textFilter);
+  if (textFilter.length > 0) productFilter(data, (campo = "title"), textFilter);
+});
+
+/*let inputArtista = document.getElementById("inputArtista");
+
+// Agrega un evento 'input' al campo de entrada, se ejecuta con cada letra
+inputArtista.addEventListener("input", function () {
+  let textoBuscado = inputArtista.value.toLowerCase();
+
+  let result = artistas.filter(function (artista) {
+    return artista.nombre.toLocaleLowerCase().includes(textoBuscado);
+  });
+
+  renderedCards(result);
+}); */
