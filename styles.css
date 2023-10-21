@@ -7,12 +7,14 @@
   --blue: #061fb2;
   --green: #056a2f;
 
-  --font: Roboto Condensed, system-ui, -apple-system, sans-serif;
+  --font: Roboto Condensed, sans-serif;
 }
 
 body {
   background-color: var(--plate);
   font-family: var(--font);
+  font-style: normal;
+  font-weight: 600;
 }
 
 .navLogo {
@@ -82,6 +84,17 @@ li a:hover {
   gap: 20px;
 }
 
+#resultsTitle {
+  font-weight: 600;
+}
+
+#inputFilter {
+  font-family: var(--font);
+  font-style: italic;
+  font-size: 30px;
+  max-width: 800px;
+}
+
 .card {
   background-color: var(--white);
   padding-bottom: 10px;
@@ -116,6 +129,7 @@ h3 {
   background-color: var(--yellow);
   border-radius: 4px;
   padding: 2px;
+  font-weight: bold;
 }
 
 .card .brand {
@@ -138,7 +152,7 @@ footer {
 .iconsSocial > a > i {
   font-size: 40px;
   font-weight: 600;
-  margin-right: 40px;
+  margin-right: 25px;
   text-shadow: 2px 2px 4px rgba(241, 235, 235, 0.903);
 }
 
@@ -146,13 +160,6 @@ footer {
 
 /* Breakpoints Small   */
 @media screen and (max-width: 576px) {
-  .navbarContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-
   .cartLogo {
     width: 50px;
   }
@@ -167,7 +174,6 @@ footer {
 
   .footerSocial > p {
     font-size: 20px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
   }
 
   .iconsSocial > a > i {
@@ -175,8 +181,8 @@ footer {
   }
 }
 
-/* Breakpoints Medium   */
-@media screen and (max-width: 768px) {
+/* Breakpoints XL   */
+@media screen and (max-width: 1200px) {
   .navbarContainer {
     display: flex;
     flex-direction: column;
@@ -186,6 +192,57 @@ footer {
 
   .cartLogo {
     width: 60px;
+  }
+
+  .footerInfo p {
+    font-size: 18px;
+  }
+
+  .footerLogo {
+    width: 260px;
+  }
+
+  .footerInfo p {
+    font-size: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+
+  .footerSocial > p {
+    font-size: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+
+  .iconsSocial > a > i {
+    font-size: 36px;
+  }
+}
+
+/* Breakpoints xx-L   */
+@media screen and (min-width: 1201px) {
+  .navbarContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .navLogo {
+    width: 400px;
+  }
+
+  .cartLogo {
+    width: 70px;
+  }
+
+  .containerPrincipal {
+    display: flex;
+    flex-direction: row;
+  }
+
+  #sidebar {
+    width: 240px;
+    max-width: 240px;
+    min-width: 240px;
   }
 
   .footerInfo p {

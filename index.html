@@ -26,8 +26,10 @@
     <!-- CSS -->
     <link href="styles.css" rel="stylesheet">
     <!-- Google Fonts -->
-
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,400;0,700;1,600&display=swap"
+        rel="stylesheet">
     <!-- Script Js -->
     <script defer src="./index.js"></script>
 
@@ -40,15 +42,14 @@
 
         <img src="./Images/decathlonLogo.png" alt="logo Decathlon" class="navLogo  ">
 
+        <div class="containerSearch container d-flex justify-content-around ">
+            <div><input type="text" class="form-control input-text m-2" placeholder="Buscar productos...."
+                    id="inputFilter"></div>
+            <div><img src="./Images/cart.png" alt="Carrito de Compras" class="cartLogo m-2 p-1 container"></div>
 
-        <div class="input-group input-group-lg p-1">
-            <input type="text" class="form-control input-text p1" placeholder="Buscar productos...."
-                aria-label="BuscarProductos" aria-describedby="basic-addon2" id="inputFilter">
-            <div class="input-group-append">
-                <div class="btn btn-outline-primary btn-lg"><i class=" fa fa-search"></i></div>
-            </div>
-            <img src="./Images/cart.png" alt="Carrito de Compras" class="cartLogo p-1">
         </div>
+
+
 
     </nav>
 
