@@ -130,9 +130,8 @@ footer {
   height: 300px;
 }
 
-footer p {
+.footerInfo p {
   font-size: x-large;
-  font-weight: 600;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
@@ -145,6 +144,7 @@ footer p {
 
 /* Media Querys   */
 
+/* Breakpoints Small   */
 @media screen and (max-width: 576px) {
   .navbarContainer {
     display: flex;
@@ -158,42 +158,55 @@ footer p {
   }
 
   .footerInfo p {
-    font-size: 15px;
+    font-size: 18px;
   }
 
   .footerLogo {
     width: 260px;
   }
 
-  .footerSocial {
-    font-size: 15px;
+  .footerSocial > p {
+    font-size: 20px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  }
+
+  .iconsSocial > a > i {
+    font-size: 36px;
   }
 }
 
-@media screen and (max-width: 750px) {
-  .footerInfoSocial {
-    flex-direction: column;
-  }
-}
-
-@media screen and (max-width: 1900px) {
-  .colorsName {
+/* Breakpoints Medium   */
+@media screen and (max-width: 768px) {
+  .navbarContainer {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
   }
-}
 
-@media screen and (max-width: 1200px) {
-  .containerPrincipal {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
+  .cartLogo {
+    width: 60px;
   }
 
-  .colorsName {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+  .footerInfo p {
+    font-size: 18px;
+  }
+
+  .footerLogo {
+    width: 260px;
+  }
+
+  .footerInfo p {
+    font-size: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+
+  .footerSocial > p {
+    font-size: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+
+  .iconsSocial > a > i {
+    font-size: 36px;
   }
 }
