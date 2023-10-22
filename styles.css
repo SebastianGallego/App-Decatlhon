@@ -167,13 +167,13 @@ footer {
   }
 
   .navLogo {
-    width: 412px;
+    width: 414px;
   }
 
   .containerPrincipal {
     display: flex;
     flex-direction: column;
-    width: 412px;
+    width: 415px;
   }
 
   .footerInfo p {
