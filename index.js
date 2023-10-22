@@ -12,7 +12,7 @@ const fetchData = async () => {
 
 let resultsContainer = document.getElementById("results");
 
-//Recibe el json de la consulta y lo muestra en pantalla
+//Recibe los productos filtrados y lo muestra en pantalla
 function renderResults(data) {
   resultsContainer.innerHTML = "";
   data.forEach((result) => {
@@ -32,8 +32,6 @@ function renderResults(data) {
 // a filtrar ademas del valor, si recibe "Ver todos" muestra todos
 // Ademas actualiza el Titulo de la lista de Productos
 function productFilter(data, campo, valor) {
-  console.log(data, campo, valor);
-
   const productsFilters = data.filter((producto) => {
     return producto[campo] == valor || valor === "Ver Todos";
   });
@@ -59,6 +57,8 @@ function renderStars(rating) {
 
 let filterkey = document.querySelectorAll("ul");
 
+//Captura por que campo y valor se desea filtrar
+//Para hacer todo con una sola funcion de render
 filterkey.forEach((filter) => {
   filter.addEventListener("click", function (e) {
     // Capturo la primer clase de todas las que tenga la etiqueta
@@ -74,11 +74,13 @@ filterkey.forEach((filter) => {
 
 const inputFilter = document.getElementById("inputFilter");
 
+//Filtro Rapido por Producto
 inputFilter.addEventListener("input", function () {
   let textFilter = inputFilter.value.toLowerCase();
-
-  console.log(data, (campo = "title"), textFilter);
   if (textFilter.length > 0) {
-    productFilter(data, (campo = "title"), textFilter);
+    let result = data.filter(function (producto) {
+      return producto.title.toLocaleLowerCase().includes(textFilter);
+    });
+    renderResults(result);
   }
 });
