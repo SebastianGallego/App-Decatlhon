@@ -1,19 +1,38 @@
 // Obtenemos el valor del parámetro de consulta 'dato' de la URL
 let urlParams = new URLSearchParams(window.location.search);
 let id = urlParams.get("id");
+let data = [];
 
-const url = `https://fakestoreapi.com/products/${id}`;
+document.addEventListener("DOMContentLoaded", () => {
+  fetchData();
+});
 
-//Pido los Productos al Servidor
-fetch(url)
-  .then((res) => res.json())
-  .then((data) => {
-    getResult(data);
-  })
-  .catch((error) => {
-    console.error("Error al obtener datos de la API:", error);
+const fetchData = async () => {
+  const res = await fetch("api.json");
+  data = await res.json();
+  console.log(data, id);
+  productFilter(data, "id", id);
+};
+
+let resultsContainer = document.getElementById("results");
+
+//Filtra por Campo/Valor, recibe el Array de Productos, y por que campo va
+// a filtrar ademas del valor, si recibe "Ver todos" muestra todos
+// Ademas actualiza el Titulo de la lista de Productos
+function productFilter(data, campo, valor) {
+  const productsFilters = data.filter((producto) => {
+    return producto[campo] == valor || valor === "Ver Todos";
   });
 
+  //const resultsTitle = document.getElementById("resultsTitle");
+  //resultsTitle.innerHTML = "";
+
+  console.log(productsFilters);
+
+  //renderResults(productsFilters);
+}
+
+/*
 //Recibe el json de la consulta y genera las cards guardo el ID
 let productContainer = document.querySelector(".product-item");
 
@@ -48,3 +67,4 @@ titleLink.addEventListener("click", function () {
 function pageback() {
   window.location.href = "index.html";
 }
+*/

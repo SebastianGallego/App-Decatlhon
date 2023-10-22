@@ -58,3 +58,9 @@ y que on la misma funcion filtre por color y marcas
 Opcion de ver todos en general (eliminar filtros)
 Poner un titulo que muestre que hay en el contenedor de tarjetas
 
+21/10
+Ya estan los filtros (Categoria, Colores, Marcas) y el filtros
+rápido con el input (busca que la cadena esté contenida en el título)
+Falta hacer la pagina de detalles
+
+

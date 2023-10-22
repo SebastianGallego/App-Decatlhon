@@ -3,6 +3,8 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 let data = [];
+let productsCard = [];
+let actualID;
 
 const fetchData = async () => {
   const res = await fetch("api.json");
@@ -17,7 +19,7 @@ function renderResults(data) {
   resultsContainer.innerHTML = "";
   data.forEach((result) => {
     resultsContainer.innerHTML += `
-    <div class="card">
+    <div class="card" id="${result.id}">
         <img src="${result.thumbnailUrl}" alt="${result.title}">
         <h3 class="productPrice">${result.price} €</h3>
         <h3 class="brand">${result.brand}</h3>
@@ -25,6 +27,19 @@ function renderResults(data) {
         <div class="rating">${renderStars(result.rating)}</div>
         
     </div> `;
+  });
+
+  productsCard = document.querySelectorAll(".card");
+  productsCard.forEach((card) => {
+    card.addEventListener(
+      "click",
+      function () {
+        actualID = card.id;
+        console.log(actualID);
+        window.location.href = "product.html?id=" + actualID;
+      }
+      //paso el ID como parametro para luego Buscarlo
+    );
   });
 }
 
@@ -84,3 +99,9 @@ inputFilter.addEventListener("input", function () {
     renderResults(result);
   }
 });
+
+//Capturo para abrir la ventana de informacion del producto
+//Para convertir de NodeList a un Array de Botones
+
+//Escucho el clic los botones de las tarjetas, con el ID voy y busco en
+//el Array de Productos el Producto Actual
