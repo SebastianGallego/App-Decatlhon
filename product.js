@@ -2,15 +2,23 @@
 let urlParams = new URLSearchParams(window.location.search);
 let id = urlParams.get("id");
 let data = [];
+let productActual; //Objeto con el producto seleccionado
+let cart = {}; //declaro el objeto donde van a estar los productos del carrito
 
 document.addEventListener("DOMContentLoaded", () => {
   fetchData();
 });
 
 const fetchData = async () => {
-  const res = await fetch("api.json");
-  data = await res.json();
-  productFilter(data, id);
+  try {
+    const res = await fetch("api.json");
+    data = await res.json();
+    productFilter(data, id);
+  } catch (err) {
+    alert(
+      "Error de comunicación con el servidor de datos - Error: " + err.message
+    );
+  }
 };
 
 let resultsContainer = document.getElementById("results");
@@ -19,10 +27,12 @@ let resultsContainer = document.getElementById("results");
 // a filtrar ademas del valor, si recibe "Ver todos" muestra todos
 // Ademas actualiza el Titulo de la lista de Productos
 function productFilter(data, valor) {
-  const productsFilters = data.filter((producto) => {
-    return producto.id == valor;
+  productActual = data.filter((item) => {
+    return item.id == valor;
   });
-  renderResults(productsFilters);
+  renderResults(productActual);
+
+  setCart(productActual);
 }
 
 let productContainer = document.getElementById("result");
@@ -67,6 +77,18 @@ function renderStars(rating) {
 
   return starsFull + starsCount;
 }
+
+const setCart = (productAdd) => {
+  const product = {
+    id: productAdd[0].id,
+    title: productAdd[0].title,
+    price: productAdd[0].price,
+    image: productActual[0].thumbnailUrl,
+    quantity: 1,
+  };
+
+  console.log(product);
+};
 
 //const logoLink = document.getElementById("logo");
 //const titleLink = document.getElementById("title");

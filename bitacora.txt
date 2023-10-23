@@ -64,3 +64,7 @@ rápido con el input (busca que la cadena esté contenida en el título)
 Falta hacer la pagina de detalles
 
 
+23/10
+Crear un archivo JS de funciones comunes entre las paginas
+Separar y acomodar los estilos css 
+

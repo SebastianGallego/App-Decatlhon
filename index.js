@@ -7,9 +7,15 @@ let productsCard = [];
 let actualID;
 
 const fetchData = async () => {
-  const res = await fetch("api.json");
-  data = await res.json();
-  productFilter(data, (campo = "id"), (valor = "Ver Todos"));
+  try {
+    const res = await fetch("api.json");
+    data = await res.json();
+    productFilter(data, (campo = "id"), (valor = "Ver Todos"));
+  } catch (err) {
+    alert(
+      "Error de comunicación con el servidor de datos - Error: " + err.message
+    );
+  }
 };
 
 let resultsContainer = document.getElementById("results");
