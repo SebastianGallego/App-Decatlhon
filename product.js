@@ -30,28 +30,42 @@ let productContainer = document.getElementById("result");
 //Recibe el json de la consulta y genera las cards guardo el ID
 function renderResults(product) {
   productContainer.innerHTML = `
-        <div class="productSelected" id="${product[0].id}">  
+        <div class="productSelected d-flex" id="${product[0].id}">  
        
 
-        <div class="imgContainer" >  
-          <img class="shop-item-image" src="${product[0].thumbnailUrl}">
+        <div class="imgContainer " >  
+          <img class="" src="${product[0].thumbnailUrl}">
         </div>
-        <div class="productContainer" >  
-          <h2 class="shop-item-description">${product[0].brand}</h2>
-          <H1 class="product-title">${product[0].title}</H1>
-          <h3 class="shop-item-price">$ ${product[0].price}</h3>
-          <p class="shop-item-description">${product[0].rating}</p>
-          <p class="shop-item-description">${product[0].details}</p>
-          <h4 class="shop-item-description">Color: ${product[0].color}</h4> 
+        <div class="productContainer d-flex flex-column align-items-start" >  
+          <h2 class="">${product[0].brand}</h2>
+          <H1 class="">${product[0].title}</H1>
+          <h3 class="productPrice ">${product[0].price} €</h3>
+          <div class="container d-flex align-items-center ">
+              <div class="rating">${renderStars(product[0].rating)} </div>
+              <h6 class="m-3">Rating: ${product[0].rating}/5 </h6>
+          </div>
+          <h6 class="">Descripción: </h6>
+          <p class="">${product[0].details}</p>
+          <h4 class="" id="${product[0].color}">Color: ${product[0].color}</h4> 
          </div>
-        
-         <button class="btn btn-primary addCart-btn" type="button">Agregar al Carrito</button>
-         <button class="btn btn-primary cancel-btn" type="button" >Cancelar</button>
+         
               
        </div>`;
 
   //Escuchar los botones para ver que hacer
   // Agregar al carrito o Volver al index
+}
+
+// Función para generar estrellas en proporción al rating
+function renderStars(rating) {
+  const stars = "★★★★★"; // Cinco estrellas llenas
+  const starsZero = "☆☆☆☆☆"; // Cinco estrellas vacías
+  const starsMax = 5; // Valor máximo de calificación
+
+  const starsFull = stars.slice(0, rating);
+  const starsCount = starsZero.slice(0, starsMax - rating);
+
+  return starsFull + starsCount;
 }
 
 //const logoLink = document.getElementById("logo");

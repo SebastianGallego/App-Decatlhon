@@ -122,12 +122,12 @@ h3 {
   margin: 4px;
 }
 
-.card .rating {
+.rating {
   color: var(--yellow);
   font-size: 30px;
 }
 
-.card .productPrice {
+.productPrice {
   background-color: var(--yellow);
   border-radius: 4px;
   padding: 2px;
@@ -156,6 +156,29 @@ footer {
   font-weight: 600;
   margin-right: 25px;
   text-shadow: 2px 2px 4px rgba(241, 235, 235, 0.903);
+}
+
+.productContainer {
+  padding: 25px;
+}
+
+.imgContainer {
+  padding: 25px;
+}
+
+.productContainer h1 {
+  font-size: 35px;
+  font-weight: 800;
+}
+
+.productContainer p {
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.productSelected {
+  background-color: var(--white);
+  border-radius: 10px;
 }
 
 /* Media Querys   */
