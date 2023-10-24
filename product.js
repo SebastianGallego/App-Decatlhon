@@ -7,6 +7,11 @@ let cart = {}; //declaro el objeto donde van a estar los productos del carrito
 
 document.addEventListener("DOMContentLoaded", () => {
   fetchData();
+
+  if (localStorage.getItem("cart") != null) {
+    cart = JSON.parse(localStorage.getItem("cart"));
+    console.log(cart);
+  }
 });
 
 const fetchData = async () => {
@@ -30,9 +35,8 @@ function productFilter(data, valor) {
   productActual = data.filter((item) => {
     return item.id == valor;
   });
+  console.log(productActual);
   renderResults(productActual);
-
-  setCart(productActual);
 }
 
 let productContainer = document.getElementById("result");
@@ -78,30 +82,47 @@ function renderStars(rating) {
   return starsFull + starsCount;
 }
 
+let btnAddCart = document.getElementById("btnAddCart");
+
+//Click en botón Agregar Al Carrito
+btnAddCart.addEventListener("click", () => {
+  setCart(productActual);
+});
+
 const setCart = (productAdd) => {
   const product = {
     id: productAdd[0].id,
     title: productAdd[0].title,
     price: productAdd[0].price,
-    image: productActual[0].thumbnailUrl,
+    image: productAdd[0].thumbnailUrl,
     quantity: 1,
   };
 
-  console.log(product);
+  // Pregunto si en el carrito ya hay algun producto con este id
+  // Si hay le sumo 1 en cantidad
+  if (cart.hasOwnProperty(product.id)) {
+    product.quantity += cart[product.id].quantity;
+  }
+
+  //Agrego el produto al array y guardo en el LocalStorage
+  cart[product.id] = { ...product };
+  localStorage.setItem("cart", JSON.stringify(cart));
+
+  //Vuelvo a la pagina principal
+  pageback();
 };
 
-//const logoLink = document.getElementById("logo");
-//const titleLink = document.getElementById("title");
-/*
-logoLink.addEventListener("click", function () {
+const logoLink = document.getElementById("logo");
+const btnCancel = document.getElementById("btnCancel");
+
+btnCancel.addEventListener("click", function () {
   pageback();
 });
 
-titleLink.addEventListener("click", function () {
+logoLink.addEventListener("click", function () {
   pageback();
 });
 
 function pageback() {
   window.location.href = "index.html";
 }
-*/

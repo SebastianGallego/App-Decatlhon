@@ -105,9 +105,3 @@ inputFilter.addEventListener("input", function () {
     renderResults(result);
   }
 });
-
-//Capturo para abrir la ventana de informacion del producto
-//Para convertir de NodeList a un Array de Botones
-
-//Escucho el clic los botones de las tarjetas, con el ID voy y busco en
-//el Array de Productos el Producto Actual
