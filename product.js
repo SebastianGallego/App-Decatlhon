@@ -106,6 +106,8 @@ const setCart = (productAdd) => {
 
   //Agrego el produto al array y guardo en el LocalStorage
   cart[product.id] = { ...product };
+
+  //Para guardar en LocalStorage debo convertir el objeto a string json
   localStorage.setItem("cart", JSON.stringify(cart));
 
   //Vuelvo a la pagina principal

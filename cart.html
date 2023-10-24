@@ -9,7 +9,7 @@
     <meta name="keywords" content="ecommerce, Decathlon, venta, shop, productos, aventura">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Titulo -->
-    <title>eCommerce | Carrito</title>
+    <title>eCommerce | Carrito de Compras</title>
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="images/icon.png">
     <!-- FontAwesome -->
@@ -23,89 +23,87 @@
         crossorigin="anonymous"></script>
 
 
+    <!-- CSS -->
+    <link href="styles.css" rel="stylesheet">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,400;0,700;1,600&display=swap"
         rel="stylesheet">
 
-    <!-- CSS -->
-    <link href="styles.css" rel="stylesheet">
-
     <!-- Script Js -->
-    <script defer src="index.js"></script>
+    <script defer src="cart.js"></script>
 
 </head>
 
 <body>
 
     <!-- Barra de Navegacion -->
-    <section class="container container-header">
-        <header>
-            <img src="./Images/LogoShop.png" alt="Logo de la Tienda" class="logoShop">
-            <h1 class="shopTitle">UnTref Store</h1>
-        </header>
-        <nav class="navBar">
-            <a href="#" class="shopping-cart">
-                <i class="fa fa-shopping-cart"></i>
-                <p class="cart-Counter">5</p>
-            </a>
-        </nav>
-    </section>
+    <nav class="container-fluid d-flex justify-content-between navbar-light bg-white border-bottom ">
+        <img src="./Images/decathlonLogo.png" alt="logo Decathlon" class="navLogo" id="logo">
+        <img src="./Images/cart.png" alt="Carrito de Compras" class="cartLogo m-2 p-1 container"></div>
+    </nav>
 
 
-    <section class="container content-section">
-        <h2 class="section-header">Carrito de Compras</h2>
-        <div class="cart-row">
-            <span class="cart-item cart-header cart-column">Producto</span>
-            <span class="cart-price cart-header cart-column">Precio</span>
-            <span class="cart-quantity cart-header cart-column">Cantidad</span>
-        </div>
-        <div class="cart-items">
-            <!-- Esto debe ser dinámico-->
-            <div class="cart-row">
-                <div class="cart-item cart-column">
-                    <img class="cart-item-image" src="./Images/Shop.png" width="100" height="100">
-                    <span class="cart-item-title">Shirt</span>
+    <!-- Contenedor Carrito -->
+    <section class="">
+        <div class="container-fluid d-flex flex-column align-items-center ">
+
+            <h2 id="resultsTitle" class="m-3">Detalle del Carrito:</h2>
+            <div class="result" id="result">
+                <!-- Acá se cargan los Productos en el carrito -->
+
+                <div id="template-footer">
+                    <th scope="row" colspan="2">Total productos</th>
+                    <td>10</td>
+                    <td>
+                        <button class="btn btn-danger btn-sm" id="vaciar-carrito">
+                            vaciar todo
+                        </button>
+                    </td>
+                    <td class="font-weight-bold">$ <span>5000</span></td>
                 </div>
-                <span class="cart-price cart-column">$19.99</span>
-                <div class="cart-quantity cart-column">
-                    <input class="cart-quantity-input" min="1" type="number" value="1">
-                    <button class="btn btn-danger" type="button">REMOVE</button>
+
+                <div id="template-carrito">
+                    <tr>
+                        <th scope="row">id</th>
+                        <td>Café</td>
+                        <td>1</td>
+                        <td>
+                            <button class="btn btn-info btn-sm">
+                                +
+                            </button>
+                            <button class="btn btn-danger btn-sm">
+                                -
+                            </button>
+                        </td>
+                        <td>$ <span>500</span></td>
+                    </tr>
                 </div>
+
+
+
+
+
             </div>
 
 
-            <div class="cart-row">
-                <div class="cart-item cart-column">
-                    <img class="cart-item-image" src="./Images/LogoShop.png" width="100" height="100">
-                    <span class="cart-item-title">Coffee</span>
-                </div>
-                <span class="cart-price cart-column">$6.99</span>
-                <div class="cart-quantity cart-column">
-                    <input class="cart-quantity-input" min="1" type="number" value="1">
-                    <button class="btn btn-danger" type="button">REMOVE</button>
-                </div>
-            </div>
 
-            <!-- hasta aquí -->
+
+            <div class="btnContainer mt-2">
+                <button class="btnAddCart btn btn-primary m-3 " type="button" id="btnAddCart">Agregar al
+                    Carrito</button>
+                <button class="btnCancel btn btn-danger m-3" id="btnCancel" type="button">Cancelar</button>
+            </div>
         </div>
-        <div class="cart-total">
-            <strong class="cart-total-title">Total</strong>
-            <span class="cart-total-price">$ </span>
-        </div>
-        <button class="btn btn-primary btn-purchase" type="button">Pagar</button>
+
     </section>
 
 
 
-    <footer>
-        <a href="http://linkedin.com" target="_blank" class="linkedin"><i class="fa-brands fa-linkedin fa-xl "></i></a>
-        <a href="http://github.com" target="_blank" class="github "><i class="fa-brands fa-github fa-xl"></i></a>
 
 
-
-    </footer>
+    <!-- Pie de pagina (footer) -->
 
 
 </body>
