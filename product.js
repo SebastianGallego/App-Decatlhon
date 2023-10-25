@@ -1,3 +1,6 @@
+// Importa las funciones desde el archivo funciones.js
+import { loadCart, renderStars } from "./commonFunctions.js";
+
 // Obtenemos el valor del parámetro de consulta 'dato' de la URL
 let urlParams = new URLSearchParams(window.location.search);
 let id = urlParams.get("id");
@@ -5,14 +8,24 @@ let data = [];
 let productActual; //Objeto con el producto seleccionado
 let cart = {}; //declaro el objeto donde van a estar los productos del carrito
 
-document.addEventListener("DOMContentLoaded", () => {
-  fetchData();
-
-  if (localStorage.getItem("cart") != null) {
-    cart = JSON.parse(localStorage.getItem("cart"));
-    console.log(cart);
-  }
+const Toast = Swal.mixin({
+  toast: true,
+  position: "top-end",
+  showConfirmButton: false,
+  timer: 1500,
+  timerProgressBar: true,
+  didOpen: (toast) => {
+    toast.addEventListener("mouseenter", Swal.stopTimer);
+    toast.addEventListener("mouseleave", Swal.resumeTimer);
+  },
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  fetchData(); //Traigo todos los productos
+  cart = loadCart(); // Cargo los productos del LocalStorage al carrito si existen
+});
+
+console.log(cart);
 
 const fetchData = async () => {
   try {
@@ -26,16 +39,12 @@ const fetchData = async () => {
   }
 };
 
-let resultsContainer = document.getElementById("results");
-
-//Filtra por Campo/Valor, recibe el Array de Productos, y por que campo va
-// a filtrar ademas del valor, si recibe "Ver todos" muestra todos
-// Ademas actualiza el Titulo de la lista de Productos
-function productFilter(data, valor) {
-  productActual = data.filter((item) => {
-    return item.id == valor;
+//Uso el método find porque se que solo voy a encontrar un producto
+// con ese id
+function productFilter(data, id) {
+  productActual = data.find((item) => {
+    return item.id == id;
   });
-  console.log(productActual);
   renderResults(productActual);
 }
 
@@ -44,42 +53,23 @@ let productContainer = document.getElementById("result");
 //Recibe el json de la consulta y genera las cards guardo el ID
 function renderResults(product) {
   productContainer.innerHTML = `
-        <div class="productSelected d-flex" id="${product[0].id}">  
-       
-
+        <div class="productSelected d-flex" id="${product.id}">  
         <div class="imgContainer " >  
-          <img class="" src="${product[0].thumbnailUrl}">
+          <img class="" src="${product.thumbnailUrl}">
         </div>
         <div class="productContainer d-flex flex-column align-items-start" >  
-          <h2 class="">${product[0].brand}</h2>
-          <H1 class="">${product[0].title}</H1>
-          <h3 class="productPrice ">${product[0].price} €</h3>
+          <h2 class="">${product.brand}</h2>
+          <H1 class="">${product.title}</H1>
+          <h3 class="productPrice ">${product.price} €</h3>
           <div class="container d-flex align-items-center ">
-              <div class="rating">${renderStars(product[0].rating)} </div>
-              <h6 class="m-3">Rating: ${product[0].rating}/5 </h6>
+              <div class="rating">${renderStars(product.rating)} </div>
+              <h6 class="m-3">Rating: ${product.rating}/5 </h6>
           </div>
           <h6 class="">Descripción: </h6>
-          <p class="">${product[0].details}</p>
-          <h4 class="" id="${product[0].color}">Color: ${product[0].color}</h4> 
+          <p class="">${product.details}</p>
+          <h4 class="" id="${product.color}">Color: ${product.color}</h4> 
          </div>
-         
-              
        </div>`;
-
-  //Escuchar los botones para ver que hacer
-  // Agregar al carrito o Volver al index
-}
-
-// Función para generar estrellas en proporción al rating
-function renderStars(rating) {
-  const stars = "★★★★★"; // Cinco estrellas llenas
-  const starsZero = "☆☆☆☆☆"; // Cinco estrellas vacías
-  const starsMax = 5; // Valor máximo de calificación
-
-  const starsFull = stars.slice(0, rating);
-  const starsCount = starsZero.slice(0, starsMax - rating);
-
-  return starsFull + starsCount;
 }
 
 let btnAddCart = document.getElementById("btnAddCart");
@@ -91,10 +81,10 @@ btnAddCart.addEventListener("click", () => {
 
 const setCart = (productAdd) => {
   const product = {
-    id: productAdd[0].id,
-    title: productAdd[0].title,
-    price: productAdd[0].price,
-    image: productAdd[0].thumbnailUrl,
+    id: productAdd.id,
+    title: productAdd.title,
+    price: productAdd.price,
+    image: productAdd.thumbnailUrl,
     quantity: 1,
   };
 
@@ -110,8 +100,16 @@ const setCart = (productAdd) => {
   //Para guardar en LocalStorage debo convertir el objeto a string json
   localStorage.setItem("cart", JSON.stringify(cart));
 
-  //Vuelvo a la pagina principal
-  pageback();
+  //Muestro un mensaje de informativo
+  Toast.fire({
+    icon: "success",
+    title: "El producto fué agregado al carrito",
+  });
+  // Espero para visualizar el mensaje y Vuelvo a la pagina principal
+
+  setTimeout(function () {
+    pageback(); // Cambia la URL a la nueva página
+  }, 1550);
 };
 
 const logoLink = document.getElementById("logo");

@@ -1,22 +1,44 @@
-document.addEventListener("DOMContentLoaded", () => {
-  fetchData();
-});
+// Importa las funciones desde el archivo funciones.js
+import { loadCart, renderStars } from "./commonFunctions.js";
 
 let data = [];
 let productsCard = [];
 let actualID;
+let cart = {};
+
+document.addEventListener("DOMContentLoaded", () => {
+  fetchData();
+  cart = loadCart(); // Cargo los productos del LocalStorage al carrito si existen
+  console.log(cart);
+  console.log(typeof cart);
+});
 
 const fetchData = async () => {
   try {
     const res = await fetch("api.json");
     data = await res.json();
-    productFilter(data, (campo = "id"), (valor = "Ver Todos"));
+    productFilter(data, "id", "Ver Todos");
   } catch (err) {
     alert(
       "Error de comunicación con el servidor de datos - Error: " + err.message
     );
   }
 };
+
+//Filtra por Campo/Valor, recibe el Array de Productos, y por que campo va
+// a filtrar ademas del valor, si recibe "Ver todos" muestra todos
+// Ademas actualiza el Titulo de la lista de Productos
+function productFilter(data, campo, valor) {
+  const productsFilters = data.filter((producto) => {
+    return producto[campo] == valor || valor === "Ver Todos";
+  });
+
+  const resultsTitle = document.getElementById("resultsTitle");
+  resultsTitle.innerHTML = "";
+  if (valor == "Ver Todos") valor = "Todos";
+  resultsTitle.innerHTML = `Productos: ${valor}`;
+  renderResults(productsFilters);
+}
 
 let resultsContainer = document.getElementById("results");
 
@@ -37,43 +59,12 @@ function renderResults(data) {
 
   productsCard = document.querySelectorAll(".card");
   productsCard.forEach((card) => {
-    card.addEventListener(
-      "click",
-      function () {
-        actualID = card.id;
-        console.log(actualID);
-        window.location.href = "product.html?id=" + actualID;
-      }
-      //paso el ID como parametro para luego Buscarlo
-    );
+    card.addEventListener("click", function () {
+      actualID = card.id;
+      console.log(actualID);
+      window.location.href = "product.html?id=" + actualID;
+    });
   });
-}
-
-//Filtra por Campo/Valor, recibe el Array de Productos, y por que campo va
-// a filtrar ademas del valor, si recibe "Ver todos" muestra todos
-// Ademas actualiza el Titulo de la lista de Productos
-function productFilter(data, campo, valor) {
-  const productsFilters = data.filter((producto) => {
-    return producto[campo] == valor || valor === "Ver Todos";
-  });
-
-  const resultsTitle = document.getElementById("resultsTitle");
-  resultsTitle.innerHTML = "";
-  if (valor == "Ver Todos") valor = "Todos";
-  resultsTitle.innerHTML = `Productos: ${valor}`;
-  renderResults(productsFilters);
-}
-
-// Función para generar estrellas en proporción al rating
-function renderStars(rating) {
-  const stars = "★★★★★"; // Cinco estrellas llenas
-  const starsZero = "☆☆☆☆☆"; // Cinco estrellas vacías
-  const starsMax = 5; // Valor máximo de calificación
-
-  const starsFull = stars.slice(0, rating);
-  const starsCount = starsZero.slice(0, starsMax - rating);
-
-  return starsFull + starsCount;
 }
 
 let filterkey = document.querySelectorAll("ul");

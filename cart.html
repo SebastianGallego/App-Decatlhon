@@ -53,18 +53,9 @@
             <div class="result" id="result">
                 <!-- Acá se cargan los Productos en el carrito -->
 
-                <div id="template-footer">
-                    <th scope="row" colspan="2">Total productos</th>
-                    <td>10</td>
-                    <td>
-                        <button class="btn btn-danger btn-sm" id="vaciar-carrito">
-                            vaciar todo
-                        </button>
-                    </td>
-                    <td class="font-weight-bold">$ <span>5000</span></td>
-                </div>
 
-                <div id="template-carrito">
+
+                <div id="template-carrito" class="">
                     <tr>
                         <th scope="row">id</th>
                         <td>Café</td>
@@ -78,10 +69,35 @@
                             </button>
                         </td>
                         <td>$ <span>500</span></td>
+
+                    </tr>
+
+                    <th scope="row">id</th>
+                    <td>Torta</td>
+                    <td>3</td>
+                    <td>
+                        <button class="btn btn-info btn-sm">
+                            +
+                        </button>
+                        <button class="btn btn-danger btn-sm">
+                            -
+                        </button>
+                    </td>
+                    <td>$ <span>500</span></td>
+
                     </tr>
                 </div>
 
-
+                <div id="template-footer">
+                    <th scope="row" colspan="2">Total productos</th>
+                    <td>10</td>
+                    <td>
+                        <button class="btn btn-danger btn-sm" id="vaciar-carrito">
+                            vaciar todo
+                        </button>
+                    </td>
+                    <td class="font-weight-bold">$ <span>5000</span></td>
+                </div>
 
 
 

@@ -31,21 +31,25 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,400;0,700;1,600&display=swap"
         rel="stylesheet">
     <!-- Script Js -->
-    <script defer src="./index.js"></script>
+    <script defer type="module" src="./index.js"></script>
 
 </head>
 
 <body>
 
     <!-- Barra de Navegacion -->
-    <nav class="navbarContainer navbar-light bg-white border-bottom ">
+    <nav class="navbarContainer navbar-light bg-white ">
 
         <img src="./Images/decathlonLogo.png" alt="logo Decathlon" class="navLogo  ">
 
-        <div class="containerSearch container d-flex justify-content-around ">
-            <div><input type="text" class="form-control input-text m-2" placeholder="Buscar productos...."
-                    id="inputFilter"></div>
-            <div><img src="./Images/cart.png" alt="Carrito de Compras" class="cartLogo m-2 p-1 container"></div>
+        <div class="containerSearch container d-flex justify-content-around align-items-center">
+            <div>
+                <input type="text" class="form-control input-text " placeholder="Buscar productos...." id="inputFilter">
+            </div>
+            <a href="#" id="cart" class="cartLink">
+                <img src="./Images/cart.png" alt="Carrito de Compras" class="cartLogo ">
+                <p class="cartCounter">5</p>
+            </a>
 
         </div>
 
