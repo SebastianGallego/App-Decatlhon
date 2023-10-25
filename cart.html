@@ -41,9 +41,9 @@
 <body>
 
     <!-- Barra de Navegacion -->
-    <nav class="container-fluid d-flex justify-content-between navbar-light bg-white border-bottom ">
+    <nav class="container-fluid d-flex justify-content-start navbar-light bg-white ">
         <img src="./Images/decathlonLogo.png" alt="logo Decathlon" class="navLogo" id="logo">
-        <img src="./Images/cart.png" alt="Carrito de Compras" class="cartLogo m-2 p-1 container"></div>
+
     </nav>
 
 
@@ -52,9 +52,9 @@
         <div class="container-fluid d-flex flex-column align-items-center ">
 
             <h2 id="resultsTitle" class="m-3">Detalle del Carrito:</h2>
-            <div class="result container-fluid " id="result">
+            <div class="result container-fluid text-center " id="result">
                 <!-- Acá se cargan los Productos en el carrito -->
-                <table class="carrito">
+                <table class="cartTable container text-center">
                     <thead>
                         <tr>
                             <th>#</th>
@@ -71,18 +71,18 @@
                         <tr>
                             <td>1</td>
                             <td>
-                                <img src="./Images/forclazLogo.png" alt="Producto 1" class="img-fluid">
+                                <img src="./Images/forclazLogo.png" alt="Imagen del Producto" class="img-fluid">
                                 <span class="d-inline ms-2">Producto 1</span>
                             </td>
                             <td>10.00</td>
                             <td>
-                                <button class="btn-restar">-</button>
-                                <span class="cantidad">1</span>
-                                <button class="btn-sumar">+</button>
+                                <button class="btn btn-danger">-</button>
+                                <span class="quantity">1</span>
+                                <button class="btn btn-success">+</button>
                             </td>
                             <td>10.00</td>
                             <td>
-                                <button class="btn-eliminar">Eliminar</button>
+                                <button class="btn btn-danger">Eliminar</button>
                             </td>
                         </tr>
 
@@ -91,9 +91,12 @@
                     </tbody>
                 </table>
 
-                <div class="resumen-carrito">
-                    <p>Total de ítems: <span id="total-items">3</span></p>
-                    <p>Total a pagar: <span id="total-pagar">40.00</span></p>
+                <div class="cartResume container-fluid">
+                    <p>Total de ítems: <span id="totalItems">3</span></p>
+                    <p>Total a pagar: <span id="totalPay">40.00</span></p>
+                    <button class="btn btn-success m-3 ">Pagar</button>
+                    <button class="btn btn-primary m-3">Vaciar Carrito</button>
+                    <button class="btn btn-danger m-3">Volver</button>
                 </div>
 
 
