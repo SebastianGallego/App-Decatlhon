@@ -9,8 +9,7 @@ let cart = {};
 document.addEventListener("DOMContentLoaded", () => {
   fetchData();
   cart = loadCart(); // Cargo los productos del LocalStorage al carrito si existen
-  console.log(cart);
-  console.log(typeof cart);
+  updateCartCounter(cart);
 });
 
 const fetchData = async () => {
@@ -96,3 +95,12 @@ inputFilter.addEventListener("input", function () {
     renderResults(result);
   }
 });
+
+function updateCartCounter(cart) {
+  const cartItems = Object.keys(cart).length;
+  console.log(cartItems);
+  const cartCounter = document.getElementById("cartCounter");
+  if (cartItems > 0) {
+    cartCounter.innerHTML = cartItems;
+  }
+}

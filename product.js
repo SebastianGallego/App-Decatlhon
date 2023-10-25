@@ -5,8 +5,10 @@ import { loadCart, renderStars } from "./commonFunctions.js";
 let urlParams = new URLSearchParams(window.location.search);
 let id = urlParams.get("id");
 let data = [];
-let productActual; //Objeto con el producto seleccionado
+let productActual = {}; //Objeto con el producto seleccionado
 let cart = {}; //declaro el objeto donde van a estar los productos del carrito
+let productContainer = document.getElementById("result");
+let btnAddCart = document.getElementById("btnAddCart");
 
 const Toast = Swal.mixin({
   toast: true,
@@ -23,9 +25,8 @@ const Toast = Swal.mixin({
 document.addEventListener("DOMContentLoaded", () => {
   fetchData(); //Traigo todos los productos
   cart = loadCart(); // Cargo los productos del LocalStorage al carrito si existen
+  updateCartCounter(cart);
 });
-
-console.log(cart);
 
 const fetchData = async () => {
   try {
@@ -45,10 +46,14 @@ function productFilter(data, id) {
   productActual = data.find((item) => {
     return item.id == id;
   });
+  console.log(productActual);
   renderResults(productActual);
-}
 
-let productContainer = document.getElementById("result");
+  //Click en botón Agregar Al Carrito
+  btnAddCart.addEventListener("click", () => {
+    setCart(productActual);
+  });
+}
 
 //Recibe el json de la consulta y genera las cards guardo el ID
 function renderResults(product) {
@@ -72,14 +77,7 @@ function renderResults(product) {
        </div>`;
 }
 
-let btnAddCart = document.getElementById("btnAddCart");
-
-//Click en botón Agregar Al Carrito
-btnAddCart.addEventListener("click", () => {
-  setCart(productActual);
-});
-
-const setCart = (productAdd) => {
+function setCart(productAdd) {
   const product = {
     id: productAdd.id,
     title: productAdd.title,
@@ -99,7 +97,7 @@ const setCart = (productAdd) => {
 
   //Para guardar en LocalStorage debo convertir el objeto a string json
   localStorage.setItem("cart", JSON.stringify(cart));
-
+  updateCartCounter(cart);
   //Muestro un mensaje de informativo
   Toast.fire({
     icon: "success",
@@ -110,9 +108,9 @@ const setCart = (productAdd) => {
   setTimeout(function () {
     pageback(); // Cambia la URL a la nueva página
   }, 1550);
-};
+}
 
-const logoLink = document.getElementById("logo");
+const logoLink = document.querySelector(".navLogo");
 const btnCancel = document.getElementById("btnCancel");
 
 btnCancel.addEventListener("click", function () {
@@ -125,4 +123,13 @@ logoLink.addEventListener("click", function () {
 
 function pageback() {
   window.location.href = "index.html";
+}
+
+function updateCartCounter(cart) {
+  const cartItems = Object.keys(cart).length;
+  console.log(cartItems);
+  const cartCounter = document.getElementById("cartCounter");
+  if (cartItems > 0) {
+    cartCounter.innerHTML = cartItems;
+  }
 }

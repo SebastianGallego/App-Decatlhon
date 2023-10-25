@@ -4,8 +4,9 @@ export { loadCart, renderStars };
 function loadCart() {
   // Cargo los productos del LocalStorage al carrito
   if (localStorage.getItem("cart") != null) {
-    const cart = JSON.parse(localStorage.getItem("cart"));
-    return cart;
+    const cartStorage = JSON.parse(localStorage.getItem("cart"));
+    console.log(cartStorage);
+    return cartStorage;
   }
 }
 

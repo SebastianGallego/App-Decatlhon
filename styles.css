@@ -39,11 +39,11 @@ body {
   border-radius: 50%;
   font-size: 14px;
   position: absolute;
-  top: 2px;
+  top: 4px;
   right: 2px;
   background-color: var(--dark);
   border-radius: 50%;
-  padding: 4px 6px;
+  padding: 3px 6px;
   font-size: 12px;
 }
 
