@@ -1,15 +1,22 @@
 // Importa las funciones desde el archivo funciones.js
-import { loadCart, renderStars } from "./commonFunctions.js";
+import { loadCart, renderStars, updateCartCounter } from "./commonFunctions.js";
 
 let data = [];
 let productsCard = [];
 let actualID;
 let cart = {};
+const resultsContainer = document.getElementById("results");
+const cartLink = document.querySelector(".cartLink");
+
+let filterkey = document.querySelectorAll("ul");
+const inputFilter = document.getElementById("inputFilter");
 
 document.addEventListener("DOMContentLoaded", () => {
   fetchData();
-  cart = loadCart(); // Cargo los productos del LocalStorage al carrito si existen
-  updateCartCounter(cart);
+  if (localStorage.getItem("cartStorage")) {
+    cart = loadCart(); // Cargo los productos del LocalStorage al carrito si existen
+    updateCartCounter(cart);
+  }
 });
 
 const fetchData = async () => {
@@ -39,8 +46,6 @@ function productFilter(data, campo, valor) {
   renderResults(productsFilters);
 }
 
-let resultsContainer = document.getElementById("results");
-
 //Recibe los productos filtrados y lo muestra en pantalla
 function renderResults(data) {
   resultsContainer.innerHTML = "";
@@ -55,18 +60,14 @@ function renderResults(data) {
         
     </div> `;
   });
-
   productsCard = document.querySelectorAll(".card");
   productsCard.forEach((card) => {
     card.addEventListener("click", function () {
       actualID = card.id;
-      console.log(actualID);
       window.location.href = "product.html?id=" + actualID;
     });
   });
 }
-
-let filterkey = document.querySelectorAll("ul");
 
 //Captura por que campo y valor se desea filtrar
 //Para hacer todo con una sola funcion de render
@@ -83,24 +84,16 @@ filterkey.forEach((filter) => {
   });
 });
 
-const inputFilter = document.getElementById("inputFilter");
-
 //Filtro Rapido por Producto
 inputFilter.addEventListener("input", function () {
   let textFilter = inputFilter.value.toLowerCase();
-  if (textFilter.length > 0) {
-    let result = data.filter(function (producto) {
-      return producto.title.toLocaleLowerCase().includes(textFilter);
-    });
-    renderResults(result);
-  }
+
+  let result = data.filter(function (producto) {
+    return producto.title.toLocaleLowerCase().includes(textFilter);
+  });
+  renderResults(result);
 });
 
-function updateCartCounter(cart) {
-  const cartItems = Object.keys(cart).length;
-  console.log(cartItems);
-  const cartCounter = document.getElementById("cartCounter");
-  if (cartItems > 0) {
-    cartCounter.innerHTML = cartItems;
-  }
-}
+cartLink.addEventListener("click", function () {
+  window.location.href = "cart.html";
+});

@@ -1,13 +1,16 @@
-export { loadCart, renderStars };
+export { loadCart, renderStars, updateCartCounter };
 
 // Cargo los productos del LocalStorage al carrito si existen
 function loadCart() {
   // Cargo los productos del LocalStorage al carrito
-  if (localStorage.getItem("cart") != null) {
-    const cartStorage = JSON.parse(localStorage.getItem("cart"));
-    console.log(cartStorage);
-    return cartStorage;
-  }
+  const cartStorage = JSON.parse(localStorage.getItem("cartStorage"));
+  return cartStorage;
+}
+
+function updateCartCounter(cart) {
+  const cartItems = Object.keys(cart).length;
+  const cartCounter = document.getElementById("cartCounter");
+  cartCounter.innerHTML = cartItems;
 }
 
 // Función para generar estrellas en proporción al rating

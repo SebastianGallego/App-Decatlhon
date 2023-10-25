@@ -1,12 +1,13 @@
-document.addEventListener("DOMContentLoaded", () => {
-  verifyCart();
-});
+// Importa las funciones desde el archivo funciones.js
+import { loadCart } from "./commonFunctions.js";
 
-function verifyCart() {
-  if (localStorage.getItem("cart") != null) {
-    cart = JSON.parse(localStorage.getItem("cart"));
-    console.log(cart);
+let cart = {};
+
+document.addEventListener("DOMContentLoaded", () => {
+  if (localStorage.getItem("cartStorage")) {
+    cart = loadCart(); // Cargo los productos del LocalStorage al carrito si existen
+    updateCartCounter(cart);
   }
-}
+});
 
 function renderCart(cart) {}

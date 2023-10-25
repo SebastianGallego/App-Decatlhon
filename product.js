@@ -1,5 +1,5 @@
 // Importa las funciones desde el archivo funciones.js
-import { loadCart, renderStars } from "./commonFunctions.js";
+import { loadCart, renderStars, updateCartCounter } from "./commonFunctions.js";
 
 // Obtenemos el valor del parámetro de consulta 'dato' de la URL
 let urlParams = new URLSearchParams(window.location.search);
@@ -9,23 +9,15 @@ let productActual = {}; //Objeto con el producto seleccionado
 let cart = {}; //declaro el objeto donde van a estar los productos del carrito
 let productContainer = document.getElementById("result");
 let btnAddCart = document.getElementById("btnAddCart");
-
-const Toast = Swal.mixin({
-  toast: true,
-  position: "top-end",
-  showConfirmButton: false,
-  timer: 1500,
-  timerProgressBar: true,
-  didOpen: (toast) => {
-    toast.addEventListener("mouseenter", Swal.stopTimer);
-    toast.addEventListener("mouseleave", Swal.resumeTimer);
-  },
-});
+const logoLink = document.querySelector(".navLogo");
+const btnCancel = document.getElementById("btnCancel");
 
 document.addEventListener("DOMContentLoaded", () => {
   fetchData(); //Traigo todos los productos
-  cart = loadCart(); // Cargo los productos del LocalStorage al carrito si existen
-  updateCartCounter(cart);
+  if (localStorage.getItem("cartStorage")) {
+    cart = loadCart(); // Cargo los productos del LocalStorage al carrito si existen
+    updateCartCounter(cart);
+  }
 });
 
 const fetchData = async () => {
@@ -46,9 +38,7 @@ function productFilter(data, id) {
   productActual = data.find((item) => {
     return item.id == id;
   });
-  console.log(productActual);
   renderResults(productActual);
-
   //Click en botón Agregar Al Carrito
   btnAddCart.addEventListener("click", () => {
     setCart(productActual);
@@ -96,7 +86,7 @@ function setCart(productAdd) {
   cart[product.id] = { ...product };
 
   //Para guardar en LocalStorage debo convertir el objeto a string json
-  localStorage.setItem("cart", JSON.stringify(cart));
+  localStorage.setItem("cartStorage", JSON.stringify(cart));
   updateCartCounter(cart);
   //Muestro un mensaje de informativo
   Toast.fire({
@@ -110,9 +100,6 @@ function setCart(productAdd) {
   }, 1550);
 }
 
-const logoLink = document.querySelector(".navLogo");
-const btnCancel = document.getElementById("btnCancel");
-
 btnCancel.addEventListener("click", function () {
   pageback();
 });
@@ -125,11 +112,14 @@ function pageback() {
   window.location.href = "index.html";
 }
 
-function updateCartCounter(cart) {
-  const cartItems = Object.keys(cart).length;
-  console.log(cartItems);
-  const cartCounter = document.getElementById("cartCounter");
-  if (cartItems > 0) {
-    cartCounter.innerHTML = cartItems;
-  }
-}
+const Toast = Swal.mixin({
+  toast: true,
+  position: "top-end",
+  showConfirmButton: false,
+  timer: 1500,
+  timerProgressBar: true,
+  didOpen: (toast) => {
+    toast.addEventListener("mouseenter", Swal.stopTimer);
+    toast.addEventListener("mouseleave", Swal.resumeTimer);
+  },
+});
