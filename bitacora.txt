@@ -25,10 +25,6 @@ la lista del carrito
 Cuando actualizo los elementos del Dom,, tengo que volver a ponerme a 
 escuchar porque ya son elementos nuevos del DOM
 
-Si me quedo con la Api de Zapatillas puedo hacer un filtrado por:
-- Rango de Precios
-- rating.Rate
-
 
 16/10
 Objeto Producto: (un objeto de Producto y un Array de Productos para el carrito)
@@ -40,16 +36,17 @@ Objeto Producto: (un objeto de Producto y un Array de Productos para el carrito)
 
 
 17/10
-Carrito de compras - Vanilla JavaScript y template HTML 
-    - Event delegation
+- Ver Event delegation
+- Hacer una funcion que genere las estrellas usando el Rating
     
 
 18/10 
 Cambio del Enfoque:
-- archivo .json de productos decathlon
+- crear un .json de productos decathlon
 - Filtrar por (categoria, marca y color) Plus: precio
 - Plus: agregar loading y alguna detalle para el rating
 
+Fuente de Decathon
 font-family: avalonbold,Helvetica Neue,Helvetica,Arial,sans-serif;
 
 20/10
@@ -67,4 +64,33 @@ Falta hacer la pagina de detalles
 23/10
 Crear un archivo JS de funciones comunes entre las paginas
 Separar y acomodar los estilos css 
+limpiar un poco el codigo
+
+24/10
+LocalStorage: guardar y Recuperar el carriro 
+Hacer la pagina del carrito 
+Ver la logica de compra, pagar y vaciar el carrito
+
+25/10
+Armar la tabla del carrito:
+ - Fila de titulos (fija)
+ - Fila de productos en el carrito
+ - Abajo puede ser un div con la cantidad y el total
+
+26/10
+Pulir logica, simplificar codigo 
+Ver alguna animacion de loading
+
+27/10
+Terminar el readme
+Sacar los console.log si quedaron
+
+
+
+
+
+
+
+
+
 
