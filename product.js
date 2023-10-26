@@ -1,5 +1,10 @@
 // Importa las funciones desde el archivo funciones.js
-import { loadCart, renderStars, updateCartCounter } from "./commonFunctions.js";
+import {
+  loadCart,
+  renderStars,
+  updateCartCounter,
+  pageback,
+} from "./commonFunctions.js";
 
 // Obtenemos el valor del parámetro de consulta 'dato' de la URL
 let urlParams = new URLSearchParams(window.location.search);
@@ -107,10 +112,6 @@ btnCancel.addEventListener("click", function () {
 logoLink.addEventListener("click", function () {
   pageback();
 });
-
-function pageback() {
-  window.location.href = "index.html";
-}
 
 const Toast = Swal.mixin({
   toast: true,

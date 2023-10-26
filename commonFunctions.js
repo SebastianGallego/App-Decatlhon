@@ -1,4 +1,4 @@
-export { loadCart, renderStars, updateCartCounter };
+export { loadCart, renderStars, updateCartCounter, pageback };
 
 // Cargo los productos del LocalStorage al carrito si existen
 function loadCart() {
@@ -23,4 +23,8 @@ function renderStars(rating) {
   const starsCount = starsZero.slice(0, starsMax - rating);
 
   return starsFull + starsCount;
+}
+
+function pageback() {
+  window.location.href = "index.html";
 }
