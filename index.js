@@ -95,5 +95,9 @@ inputFilter.addEventListener("input", function () {
 });
 
 cartLink.addEventListener("click", function () {
-  window.location.href = "cart.html";
+  if (Object.values(cart).length > 0) {
+    window.location.href = "cart.html";
+  } else {
+    Swal.fire("Carrito Vacío!", "Puedes comprar algo de la tienda", "warning");
+  }
 });

@@ -16,6 +16,7 @@ let productContainer = document.getElementById("result");
 let btnAddCart = document.getElementById("btnAddCart");
 const logoLink = document.querySelector(".navLogo");
 const btnCancel = document.getElementById("btnCancel");
+const cartLink = document.querySelector(".cartLink");
 
 document.addEventListener("DOMContentLoaded", () => {
   fetchData(); //Traigo todos los productos
@@ -94,7 +95,7 @@ function setCart(productAdd) {
   localStorage.setItem("cartStorage", JSON.stringify(cart));
   updateCartCounter(cart);
   //Muestro un mensaje de informativo
-  Toast.fire({
+  AddedSuccessfully.fire({
     icon: "success",
     title: "El producto fué agregado al carrito",
   });
@@ -102,7 +103,7 @@ function setCart(productAdd) {
 
   setTimeout(function () {
     pageback(); // Cambia la URL a la nueva página
-  }, 1550);
+  }, 1150);
 }
 
 btnCancel.addEventListener("click", function () {
@@ -113,14 +114,22 @@ logoLink.addEventListener("click", function () {
   pageback();
 });
 
-const Toast = Swal.mixin({
+const AddedSuccessfully = Swal.mixin({
   toast: true,
   position: "top-end",
   showConfirmButton: false,
-  timer: 1500,
+  timer: 1100,
   timerProgressBar: true,
   didOpen: (toast) => {
     toast.addEventListener("mouseenter", Swal.stopTimer);
     toast.addEventListener("mouseleave", Swal.resumeTimer);
   },
+});
+
+cartLink.addEventListener("click", function () {
+  if (Object.values(cart).length > 0) {
+    window.location.href = "cart.html";
+  } else {
+    Swal.fire("Carrito Vacío!", "Puedes comprar algo de la tienda", "warning");
+  }
 });

@@ -4,14 +4,12 @@ import { loadCart, pageback } from "./commonFunctions.js";
 let cart = {};
 const productRows = document.getElementById("productRows");
 const btnClearCart = document.getElementById("btnClearCart");
-const btnProductsPay = document.getElementById("productsPay");
+const btnProductsPay = document.getElementById("btnProductsPay");
 const btnReturn = document.getElementById("btnReturn");
 
 document.addEventListener("DOMContentLoaded", () => {
   if (localStorage.getItem("cartStorage")) {
     cart = loadCart(); // Cargo los productos del LocalStorage al carrito si existen
-
-    console.log(cart);
     productRows.innerHTML = "";
     renderCart();
   }
@@ -55,10 +53,13 @@ function updateResume() {
     (acc, { quantity, price }) => acc + quantity * price,
     0
   );
-
-  console.log(totalItems, totalPay);
   document.getElementById("totalItems").textContent = totalItems;
   document.getElementById("totalPay").textContent = totalPay + " €";
+
+  if (Object.values(cart).length == 0) {
+    btnClearCart.style.display = "none";
+    btnProductsPay.style.display = "none";
+  }
 }
 
 btnReturn.addEventListener("click", () => {
@@ -66,11 +67,43 @@ btnReturn.addEventListener("click", () => {
   pageback();
 });
 
-//Vaciar el Carrito, limpio el objero carrito, limpio la tabla
-//grabo en el LocalStorage y actualiso el Resumen
+//Si hay productos en el carrito, limpio el objero carrito,
+// limpio la tabla grabo en el LocalStorage y actualiso el Resumen
 btnClearCart.addEventListener("click", () => {
-  cart = {};
-  productRows.innerHTML = "";
-  localStorage.setItem("cartStorage", JSON.stringify(cart));
-  updateResume();
+  if (Object.values(cart).length > 0) {
+    CartEmpy();
+  }
+});
+
+function CartEmpy() {
+  Swal.fire({
+    title: "Está seguro de vaciar el Carrito?",
+    text: "Estas a tiempo de arrepentirte!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Si, vaciar carrito!",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      Swal.fire(
+        "Carrito Vacío!",
+        "El carrito ya no tiene productos 😥.",
+        "success"
+      );
+      cart = {};
+      localStorage.setItem("cartStorage", JSON.stringify(cart));
+      productRows.innerHTML = "";
+      updateResume();
+    }
+  });
+}
+
+//Pago
+btnProductsPay.addEventListener("click", () => {
+  if (Object.values(cart).length > 0) {
+    CartEmpy();
+  } else {
+    Swal.fire("Carrito Vacío!", "No hay productos para pagar.", "warning");
+  }
 });
