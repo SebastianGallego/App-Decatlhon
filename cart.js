@@ -6,6 +6,7 @@ const productRows = document.getElementById("productRows");
 const btnClearCart = document.getElementById("btnClearCart");
 const btnProductsPay = document.getElementById("btnProductsPay");
 const btnReturn = document.getElementById("btnReturn");
+const logo = document.getElementById("logo");
 
 document.addEventListener("DOMContentLoaded", () => {
   if (localStorage.getItem("cartStorage")) {
@@ -19,6 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function renderCart() {
+  productRows.innerHTML = "";
   Object.values(cart).forEach((product) => {
     productRows.innerHTML += `
       <tr>
@@ -31,13 +33,15 @@ function renderCart() {
             </td>
         <td>${product.price} €</td>
       <td>
-          <button class="btn btn-danger" dataset.id = ${product.id}>-</button>
+          <button class="btn btn-danger" data-id = ${product.id}>-</button>
           <span class="quantity">${product.quantity}</span>
-          <button class="btn btn-success" dataset.id = ${product.id}>+</button>
+          <button class="btn btn-success" data-id = ${product.id}>+</button>
       </td>
           <td>${product.quantity * product.price} €</td>
       <td>
-          <button class="btn btn-danger">Eliminar</button>
+          <button class="btn btn-warning" data-id = ${
+            product.id
+          }>Eliminar</button>
       </td>
     </tr>
          `;
@@ -78,6 +82,7 @@ btnClearCart.addEventListener("click", () => {
   }
 });
 
+//Confirmacion de Vaciar Carrito
 function CartEmpy() {
   Swal.fire({
     title: "Está seguro de vaciar el Carrito?",
@@ -111,32 +116,48 @@ btnProductsPay.addEventListener("click", () => {
   }
 });
 
+//Escucho los Botones de la tabla
+//Los selecciono por la clase
+
 productRows.addEventListener("click", (e) => {
   btnCantidad(e);
 });
 
 const btnCantidad = (e) => {
-  console.log(e);
   if (e.target.classList.contains("btn-success")) {
-    console.log(e.target.dataset.id);
-    //producto.cantidad++;
-    //cart[e.target.dataset.id] = { ...producto };
-    //renderCart();
+    const id = e.target.dataset.id;
+    const product = cart[id];
+    product.quantity++;
+    cart[id] = { ...product };
   }
 
-  /*
   if (e.target.classList.contains("btn-danger")) {
-    const producto = cart[e.target.dataset.id];
-    producto.cantidad--;
-    if (producto.cantidad === 0) {
-      delete cart[e.target.dataset.id];
+    const id = e.target.dataset.id;
+    const product = cart[id];
+    product.quantity--;
+
+    if (cart[id].quantity === 0) {
+      delete cart[id];
     } else {
-      cart[e.target.dataset.id] = { ...producto };
+      cart[id] = { ...product };
     }
-    renderCart();
-  }*/
+  }
+
+  if (e.target.classList.contains("btn-warning")) {
+    const id = e.target.dataset.id;
+    console.log("borrar", id);
+    delete cart[id];
+  }
+
+  renderCart();
+  localStorage.setItem("cartStorage", JSON.stringify(cart));
+
   e.stopPropagation();
 };
+
+logo.addEventListener("click", () => {
+  pageback();
+});
 
 /* Plantilla Modal de contacto
 
