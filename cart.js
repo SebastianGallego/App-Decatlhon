@@ -7,6 +7,7 @@ const btnClearCart = document.getElementById("btnClearCart");
 const btnProductsPay = document.getElementById("btnProductsPay");
 const btnReturn = document.getElementById("btnReturn");
 const logo = document.getElementById("logo");
+const containerModal = document.getElementsByClassName("containerModal");
 
 document.addEventListener("DOMContentLoaded", () => {
   if (localStorage.getItem("cartStorage")) {
@@ -110,6 +111,7 @@ function CartEmpy() {
 //Pago
 btnProductsPay.addEventListener("click", () => {
   if (Object.values(cart).length > 0) {
+    renderModalPay();
   } else {
     Swal.fire("Carrito Vacío!", "No hay productos para pagar.", "warning");
   }
@@ -117,7 +119,6 @@ btnProductsPay.addEventListener("click", () => {
 
 //Escucho los Botones de la tabla
 //Los selecciono por la clase
-
 productRows.addEventListener("click", (e) => {
   btnCantidad(e);
 });
@@ -158,55 +159,29 @@ logo.addEventListener("click", () => {
   pageback();
 });
 
-/* Plantilla Modal de contacto
+function renderModalPay() {
+  Swal.fire({
+    title: "Ingrese los dato para la Compra",
+    html: ` <input type="text" id="name" class="swal2-input" placeholder="Nombre">
+    <input type="text" id="surname" class="swal2-input" placeholder="Apellido">
+   <input type="email" id="email" class="swal2-input" placeholder="correo@email.com">
+    `,
+    confirmButtonText: "Pagar",
+    focusConfirm: false,
+    preConfirm: () => {
+      const name = Swal.getPopup().querySelector("#name").value;
+      const surname = Swal.getPopup().querySelector("#surname").value;
+      const email = Swal.getPopup().querySelector("#email").value;
 
-<div class="modal fade" id="modalContactForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-  aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Write to us</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body mx-3">
-        <div class="md-form mb-5">
-          <i class="fas fa-user prefix grey-text"></i>
-          <input type="text" id="form34" class="form-control validate">
-          <label data-error="wrong" data-success="right" for="form34">Your name</label>
-        </div>
-
-        <div class="md-form mb-5">
-          <i class="fas fa-envelope prefix grey-text"></i>
-          <input type="email" id="form29" class="form-control validate">
-          <label data-error="wrong" data-success="right" for="form29">Your email</label>
-        </div>
-
-        <div class="md-form mb-5">
-          <i class="fas fa-tag prefix grey-text"></i>
-          <input type="text" id="form32" class="form-control validate">
-          <label data-error="wrong" data-success="right" for="form32">Subject</label>
-        </div>
-
-        <div class="md-form">
-          <i class="fas fa-pencil prefix grey-text"></i>
-          <textarea type="text" id="form8" class="md-textarea form-control" rows="4"></textarea>
-          <label data-error="wrong" data-success="right" for="form8">Your message</label>
-        </div>
-
-      </div>
-      <div class="modal-footer d-flex justify-content-center">
-        <button class="btn btn-unique">Send <i class="fas fa-paper-plane-o ml-1"></i></button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="text-center">
-  <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalContactForm">Launch
-    Modal Contact Form</a>
-</div>
-
-
-*/
+      return [name, surname, email];
+    },
+  }).then((result) => {
+    Swal.fire;
+    console.log(result.value);
+    //`
+    //Login: ${result.value.login}
+    //Password: ${result.value.password}
+    //`.trim()
+    //();
+  });
+}
