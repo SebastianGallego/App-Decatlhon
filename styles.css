@@ -237,6 +237,10 @@ footer {
     width: 415px;
   }
 
+  footer {
+    width: 100%;
+  }
+
   .footerInfo p {
     font-size: 18px;
   }
@@ -252,23 +256,6 @@ footer {
   .iconsSocial > a > i {
     font-size: 36px;
     margin: 5px 0px;
-  }
-}
-
-@media screen and (max-width: 50px) {
-  .navLogo {
-    width: 400px;
-  }
-  .containerPrincipal {
-    display: flex;
-    flex-direction: column;
-    width: 560;
-  }
-
-  .iconsSocial {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
   }
 }
 
