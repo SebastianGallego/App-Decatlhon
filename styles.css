@@ -234,7 +234,7 @@ footer {
   .containerPrincipal {
     display: flex;
     flex-direction: column;
-    width: 415px;
+    width: 100%;
   }
 
   footer {
