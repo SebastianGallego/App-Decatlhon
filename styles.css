@@ -222,7 +222,7 @@ footer {
 /* Media Querys   */
 
 /* Breakpoints XS   */
-@media screen and (max-width: 415px) {
+@media screen and (max-width: 550px) {
   #products {
     width: 320px;
   }
@@ -255,9 +255,9 @@ footer {
   }
 }
 
-@media screen and (max-width: 580px) {
+@media screen and (max-width: 50px) {
   .navLogo {
-    width: 414px;
+    width: 400px;
   }
   .containerPrincipal {
     display: flex;
