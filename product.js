@@ -54,11 +54,11 @@ function productFilter(data, id) {
 //Recibe el json de la consulta y genera las cards guardo el ID
 function renderResults(product) {
   productContainer.innerHTML = `
-        <div class="productSelected d-flex" id="${product.id}">  
+        <div class="productSelected d-flex " id="${product.id}">  
         <div class="imgContainer " >  
-          <img class="" src="${product.thumbnailUrl}">
+          <img class="productImg" src="${product.thumbnailUrl}">
         </div>
-        <div class="productContainer d-flex flex-column align-items-start" >  
+        <div class="productContainer container-fluid d-flex flex-column align-items-start" >  
           <h2 class="">${product.brand}</h2>
           <H1 class="">${product.title}</H1>
           <h3 class="productPrice ">${product.price} €</h3>
@@ -103,7 +103,7 @@ function setCart(productAdd) {
 
   setTimeout(function () {
     pageback(); // Cambia la URL a la nueva página
-  }, 1150);
+  }, 950);
 }
 
 btnCancel.addEventListener("click", function () {
@@ -118,7 +118,7 @@ const AddedSuccessfully = Swal.mixin({
   toast: true,
   position: "top-end",
   showConfirmButton: false,
-  timer: 1100,
+  timer: 900,
   timerProgressBar: true,
   didOpen: (toast) => {
     toast.addEventListener("mouseenter", Swal.stopTimer);

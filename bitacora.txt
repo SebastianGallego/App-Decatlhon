@@ -84,6 +84,7 @@ Ver alguna animacion de loading
 27/10
 Terminar el readme
 Sacar los console.log si quedaron
+Formulario de Pago
 
 
 

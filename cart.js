@@ -110,7 +110,6 @@ function CartEmpy() {
 //Pago
 btnProductsPay.addEventListener("click", () => {
   if (Object.values(cart).length > 0) {
-    CartEmpy();
   } else {
     Swal.fire("Carrito Vacío!", "No hay productos para pagar.", "warning");
   }

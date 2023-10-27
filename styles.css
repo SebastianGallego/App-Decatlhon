@@ -15,8 +15,18 @@ body {
   font-family: var(--font);
   font-style: normal;
   font-weight: 600;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
+.containerMain {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
 .navLogo {
   width: 460px;
   cursor: pointer;
@@ -165,7 +175,9 @@ footer {
   background-size: cover; /* Escala la imagen para cubrir todo el footer */
   background-repeat: no-repeat;
   background-position: center;
-  height: 280px;
+
+  padding: 10px;
+  text-align: center;
 }
 
 .footerInfo p {
@@ -257,6 +269,23 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .productSelected {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .productImg {
+    width: 250px;
+    height: 250px;
+  }
+
+  .imgContainer {
+    width: 250px;
+    height: 250px;
   }
 }
 
