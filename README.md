@@ -3,7 +3,7 @@
 Esta app replica la lógica de un e-commerce. Tiene diferentes funcionalidades, se pueden filtrar productos por Categorias, Colores o Marcas. Tambien un filtro dinámico que busca coincidencias por el título del producto mientras se escribe en un "imput".
 
 
-##API
+## API
 
 Los datos provienen de un archivo Json simulando la conexion con una API 
 
@@ -47,7 +47,7 @@ Se utiliza la fuente "Roboto Condensed" de Google Fonts para el texto en todo el
 
 
  
-##Authors
+## Authors
 
     github: @SebastianGallego
 
