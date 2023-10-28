@@ -7,7 +7,7 @@ API
 
 Los datos provienen de un archivo Json simulando la conexion con una API 
 
-![imagen]("../images/json.png")
+![imagen](./images/json.png)
 
 
 ## Estructura y lógica de la aplicación 
