@@ -67,8 +67,8 @@ function updateResume() {
   }
 }
 
+//volver al index
 btnReturn.addEventListener("click", () => {
-  //volver al index
   pageback();
 });
 
@@ -151,6 +151,7 @@ logo.addEventListener("click", () => {
   pageback();
 });
 
+//Genero el Modal para el Pago
 function renderModalPay() {
   const pay = document.getElementById("totalPay").textContent;
 
@@ -175,8 +176,27 @@ function renderModalPay() {
   });
 }
 
+//Generar un ticket  con un numero de  operacion random
+// Ademas
 function checkOut(checkOutData) {
-  console.log(checkOutData);
+  const textMensaje = `${checkOutData.name} ${checkOutData.surname}`;
 
-  //generar un ticket  con un numero de  operacion
+  localStorage.setItem("cartStorage", "");
+  productRows.innerHTML = "";
+  document.getElementById("totalItems").textContent = 0;
+  document.getElementById("totalPay").textContent = 0 + " €";
+  btnClearCart.style.display = "none";
+  btnProductsPay.style.display = "none";
+
+  let transationId = "";
+  for (let i = 0; i < 6; i++) {
+    const digit = Math.floor(Math.random() * 10); // Genera un dígito aleatorio del 0 al 9
+    transationId += digit;
+  }
+  Swal.fire({
+    icon: "success",
+    title: "Gracias por su compra",
+    text: `${textMensaje}`,
+    footer: `<p>Número de Operacion: ${transationId} - Importe:${checkOutData.pay} </p>`,
+  });
 }
