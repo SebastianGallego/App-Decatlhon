@@ -36,10 +36,10 @@ En la pagina del Carrito de  Compras se muestra una tabla con los productos carg
 
 | Color             | Hex                                                                |
 | ----------------- | ------------------------------------------------------------------ |
-| --yellow | ![#f8d406](https://via.placeholder.com/10/0a192f?text=+) #f8d406 |
-| --dark | ![#023447](https://via.placeholder.com/10/f8f8f8?text=+) #023447|
-| --white | ![#fff](https://via.placeholder.com/10/00b48a?text=+) #fff |
-| --plate  | ![#686666d7](https://via.placeholder.com/10/00b48a?text=+) #686666d7 |
+| --yellow | ![#f8d406](https://via.placeholder.com/10/f8d406?text=+)#f8d406 |
+| --dark | ![#023447](https://via.placeholder.com/10/023447?text=+)#023447|
+| --white | ![#fff](https://via.placeholder.com/10/ffffff?text=+)#ffffff |
+| --plate  | ![#686666d7](https://via.placeholder.com/10/686666d7?text=+)#686666d7 |
 
 ## Fuente
 
