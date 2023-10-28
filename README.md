@@ -1,4 +1,4 @@
-# Diplomatura UNTREF - App Decatlhon
+# Diplomatura UNTREF - App Decatlhon 🛍
 
 Esta app replica la lógica de un e-commerce. Tiene diferentes funcionalidades, se pueden filtrar productos por Categorias, Colores o Marcas. Tambien un filtro dinámico que busca coincidencias por el título del producto mientras se escribe en un "imput".
 
@@ -30,6 +30,21 @@ En la pagina del Carrito de  Compras se muestra una tabla con los productos carg
 [Pagar] Nos permite poner los datos del cliente y simular el pago, no genera un numero de operación de forma aleatoria con 6 dígitos.
 
 [Vaciar Carrito] Vacía el carrito despues de confirmar si estamos seguros.
+
+
+## Colores de Referencia
+
+| Color             | Hex                                                                |
+| ----------------- | ------------------------------------------------------------------ |
+| --yellow | ![#f8d406](https://via.placeholder.com/10/0a192f?text=+) #f8d406 |
+| --dark | ![#023447](https://via.placeholder.com/10/f8f8f8?text=+) #023447|
+| --white | ![#fff](https://via.placeholder.com/10/00b48a?text=+) #fff |
+| --plate  | ![#686666d7](https://via.placeholder.com/10/00b48a?text=+) #686666d7 |
+
+## Fuente
+
+Se utiliza la fuente "Roboto Condensed" de Google Fonts para el texto en todo el sitio, lo que aporta una apariencia moderna y legible.
+
 
  
 Authors
