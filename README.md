@@ -6,16 +6,10 @@ Esta app replica la lógica de un e-commerce. Tiene diferentes funcionalidades, 
 API
 
 Los datos provienen de un archivo Json simulando la conexion con una API 
-{ "id": 3, 
-    "title": "Camiseta Fitness Hombre Verde Manga Corta Algodón", 
-    "price": 12.99, 
-    "brand": "Puma", 
-    "category":"Remeras", 
-    "details": "Diseñada para el fitness,......", 
-    "color": "Verde", 
-    "thumbnailUrl": "https://mediadecathlon.com/p2518549", 
-    "rating": 4 
- },
+
+![App Screenshot](./images/json.png)
+
+
 
 ## Estructura y lógica de la aplicación 
 
