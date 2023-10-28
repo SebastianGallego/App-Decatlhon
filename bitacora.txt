@@ -12,15 +12,13 @@ En este caso hay que sumar y multiplicar, los items y las cantidades
 Tengo que verificar si ya existe el mismo producto en el carrito
 Si ya existe tengo que sumar a la cantidad y si no, lo agrego porque 
 va a ser el primero
-Antes de hacer el push al shoppingCartArray, tengo que ver si existe
-lo puedo hacer comparando con el ID recorriendo el shoppingCartArray. 
+
 
 
 15/10
 Si tengo que eliminar un item del carrito con el boton "Remover"
 puedo filtrar todos menos el que quiero y luego vuelvo a renderizar
 la lista del carrito
-
 
 Cuando actualizo los elementos del Dom,, tengo que volver a ponerme a 
 escuchar porque ya son elementos nuevos del DOM
