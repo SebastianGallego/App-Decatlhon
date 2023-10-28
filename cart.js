@@ -13,9 +13,6 @@ document.addEventListener("DOMContentLoaded", () => {
   if (localStorage.getItem("cartStorage")) {
     cart = loadCart(); // Cargo los productos del LocalStorage al carrito si existen
     productRows.innerHTML = "";
-
-    console.log(cart);
-
     renderCart();
   }
 });
@@ -110,11 +107,7 @@ function CartEmpy() {
 
 //Pago
 btnProductsPay.addEventListener("click", () => {
-  if (Object.values(cart).length > 0) {
-    renderModalPay();
-  } else {
-    Swal.fire("Carrito Vacío!", "No hay productos para pagar.", "warning");
-  }
+  renderModalPay();
 });
 
 //Escucho los Botones de la tabla
@@ -145,7 +138,6 @@ const btnCantidad = (e) => {
 
   if (e.target.classList.contains("btn-warning")) {
     const id = e.target.dataset.id;
-    console.log("borrar", id);
     delete cart[id];
   }
 
@@ -160,11 +152,14 @@ logo.addEventListener("click", () => {
 });
 
 function renderModalPay() {
+  const pay = document.getElementById("totalPay").textContent;
+
   Swal.fire({
     title: "Ingrese los dato para la Compra",
     html: ` <input type="text" id="name" class="swal2-input" placeholder="Nombre">
     <input type="text" id="surname" class="swal2-input" placeholder="Apellido">
    <input type="email" id="email" class="swal2-input" placeholder="correo@email.com">
+   <p>Total a pagar: <span id="">${pay} </span></p>
     `,
     confirmButtonText: "Pagar",
     focusConfirm: false,
@@ -173,15 +168,15 @@ function renderModalPay() {
       const surname = Swal.getPopup().querySelector("#surname").value;
       const email = Swal.getPopup().querySelector("#email").value;
 
-      return [name, surname, email];
+      return { name: name, surname: surname, email: email, pay: pay };
     },
-  }).then((result) => {
-    Swal.fire;
-    console.log(result.value);
-    //`
-    //Login: ${result.value.login}
-    //Password: ${result.value.password}
-    //`.trim()
-    //();
+  }).then((checkOutData) => {
+    checkOut(checkOutData.value);
   });
+}
+
+function checkOut(checkOutData) {
+  console.log(checkOutData);
+
+  //generar un ticket  con un numero de  operacion
 }
