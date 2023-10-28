@@ -9,7 +9,7 @@ Los datos provienen de un archivo Json simulando la conexion con una API
 
 ![App Screenshot](./images/json.png)
 
-
+![alt tag]("./images/json.png")
 
 ## Estructura y lógica de la aplicación 
 
