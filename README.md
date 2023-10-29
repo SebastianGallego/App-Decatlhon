@@ -1,4 +1,6 @@
-# Diplomatura UNTREF - App Decatlhon 🛍
+# Diplomatura UNTREF - App Decatlhon 🛍 
+
+Link: https://app-decathlon.netlify.app/
 
 Esta app replica la lógica de un e-commerce. Tiene diferentes funcionalidades, se pueden filtrar productos por Categorias, Colores o Marcas. Tambien un filtro dinámico que busca coincidencias por el título del producto mientras se escribe en un "imput".
 
