@@ -87,6 +87,9 @@ filterkey.forEach((filter) => {
 //Filtro Rapido por Producto
 inputFilter.addEventListener("input", function () {
   let textFilter = inputFilter.value.toLowerCase();
+  document.getElementById(
+    "resultsTitle"
+  ).innerHTML = `Productos: ${textFilter}`;
 
   let result = data.filter(function (producto) {
     return producto.title.toLocaleLowerCase().includes(textFilter);
