@@ -1,15 +1,16 @@
-# Diplomatura UNTREF - App Decatlhon
+# Diplomatura UNTREF - App Decatlhon 🛍 
+
+Link: https://app-decathlon.netlify.app/
 
 Esta app replica la lógica de un e-commerce. Tiene diferentes funcionalidades, se pueden filtrar productos por Categorias, Colores o Marcas. Tambien un filtro dinámico que busca coincidencias por el título del producto mientras se escribe en un "imput".
 
 
-API
+## API
 
 Los datos provienen de un archivo Json simulando la conexion con una API 
 
-![App Screenshot](./images/json.png)
+![imagen](./Images/json.png)
 
-![alt tag]("./images/json.png")
 
 ## Estructura y lógica de la aplicación 
 
@@ -32,10 +33,25 @@ En la pagina del Carrito de  Compras se muestra una tabla con los productos carg
 
 [Vaciar Carrito] Vacía el carrito despues de confirmar si estamos seguros.
 
+
+## Colores de Referencia
+
+| Color             | Hex                                                                |
+| ----------------- | ------------------------------------------------------------------ |
+| --yellow | ![#f8d406](https://via.placeholder.com/10/f8d406?text=+)#f8d406 |
+| --dark | ![#023447](https://via.placeholder.com/10/023447?text=+)#023447|
+| --white | ![#fff](https://via.placeholder.com/10/ffffff?text=+)#ffffff |
+| --plate  | ![#686666d7](https://via.placeholder.com/10/686666d7?text=+)#686666d7 |
+
+## Fuente
+
+Se utiliza la fuente "Roboto Condensed" de Google Fonts para el texto en todo el sitio, lo que aporta una apariencia moderna y legible.
+
+
  
-Authors
+## Authors
 
     github: @SebastianGallego
 
-    Twitter:@stavelot78
+    Twitter: @stavelot78
 
