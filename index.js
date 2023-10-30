@@ -74,11 +74,14 @@ function renderResults(data) {
 filterkey.forEach((filter) => {
   filter.addEventListener("click", function (e) {
     // Capturo la primer clase de todas las que tenga la etiqueta
-    const campo = filter.classList[0];
+    const campo = this.closest("ul").classList[0];
+
     let valor = e.target.innerText;
+
     if (valor === "") {
       // Si es una img no tiene un innerText uso el atributo data
       valor = e.target.getAttribute("data");
+      console.log(campo, valor);
     }
     productFilter(data, campo, valor);
   });
