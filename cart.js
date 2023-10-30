@@ -35,7 +35,7 @@ function renderCart() {
           <span class="quantity">${product.quantity}</span>
           <button class="btn btn-success" data-id = ${product.id}>+</button>
       </td>
-          <td>${product.quantity * product.price} €</td>
+          <td>${(product.quantity * product.price).toFixed(2)} €</td>
       <td>
           <button class="btn btn-warning" data-id = ${
             product.id
@@ -59,7 +59,7 @@ function updateResume() {
     0
   );
   document.getElementById("totalItems").textContent = totalItems;
-  document.getElementById("totalPay").textContent = totalPay + " €";
+  document.getElementById("totalPay").textContent = totalPay.toFixed(2) + " €";
 
   if (Object.values(cart).length == 0) {
     btnClearCart.style.display = "none";
@@ -156,7 +156,7 @@ function renderModalPay() {
   const pay = document.getElementById("totalPay").textContent;
 
   Swal.fire({
-    title: "Ingrese los dato para la Compra",
+    title: "Ingrese los datos para la Compra",
     html: ` <input type="text" id="name" class="swal2-input" placeholder="Nombre">
     <input type="text" id="surname" class="swal2-input" placeholder="Apellido">
    <input type="email" id="email" class="swal2-input" placeholder="correo@email.com">
